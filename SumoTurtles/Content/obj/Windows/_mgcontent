@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/red_turtle_sprite_sheet.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/orange_turtle_sprite_sheet.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/arena.tif</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/shadow.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/shadow_blur.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/title_background.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/title.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/exit_menu.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/play_menu.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/turtle_sym.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/bg_title_screen.wav</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/gong_short.wav</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/arena_1.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/death_clouds.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/obstacle.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/red_turtle_sprite_sheet_new.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/orange_turtle_sprite_sheet_new.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/blue_turtle_sprite_sheet_new.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/purple_turtle_sprite_sheet_new.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/Zenzai.spritefont</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/orange_col.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/blue_col.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/purple_col.png</File>
+    <File>C:/Users/u1014631/Documents/Visual Studio 2015/Projects/SumoTurtles/SumoTurtles/Content/red_col.png</File>
+  </SourceFiles>
+</SourceFileCollection>

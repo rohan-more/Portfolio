@@ -1,0 +1,22 @@
+﻿Build started 1/28/2016 9:17:21 PM.
+     1>Project "C:\Users\Rohan\Documents\Visual Studio 2013\Projects\Assignment1.11\Engine\Engine\Engine.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\Engine.pdb" /Gd /TP /analyze- /errorReport:prompt Actor.cpp Assert.Win32.cpp ConsolePrint.Win32.cpp FixedSizeAllocator32.cpp Vector3.cpp
+         Vector3.cpp
+         FixedSizeAllocator32.cpp
+         ConsolePrint.Win32.cpp
+         Assert.Win32.cpp
+         Actor.cpp
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\Lib.exe /OUT:"C:\Users\Rohan\Documents\Visual Studio 2013\Projects\Assignment1.11\Game\Debug\Engine.lib" /NOLOGO Debug\Actor.obj
+         Debug\Assert.Win32.obj
+         Debug\ConsolePrint.Win32.obj
+         Debug\FixedSizeAllocator32.obj
+         Debug\Vector3.obj
+         Engine.vcxproj -> C:\Users\Rohan\Documents\Visual Studio 2013\Projects\Assignment1.11\Game\Debug\Engine.lib
+     1>Done Building Project "C:\Users\Rohan\Documents\Visual Studio 2013\Projects\Assignment1.11\Engine\Engine\Engine.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:10.78

@@ -1,0 +1,192 @@
+@charset "utf-8";
+/* CSS Document */
+
+#Background
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	background-color: #000000;
+}
+
+#Game
+{
+	position: absolute;
+	z-index: 10;
+	width: 768px;
+	height: 864px;
+	background-color: #AF7D38;
+	visibility: hidden;
+}
+
+#Preloader
+{
+	position: absolute; 
+	width: 240px;
+	height: 100px;	
+}
+
+#Prenum
+{
+	position: absolute;
+	left: 115px;
+	top: 20px;
+	font-size: 10px;
+	font-family: "Arial";
+	color: #FFFFFF;	
+}
+
+#Prebar
+{
+	position: absolute;
+	left: 0px;
+	top: 40px;
+	width: 10px;
+	height: 10px;
+	background-color: #FFFFFF;	
+}
+
+#Main
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;	
+}
+
+#Mimg
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;	
+}
+
+#Paus
+{
+	position: absolute;
+	left: 297px;
+	top: 399px;
+	width: 174px;
+	height: 66px;
+	z-index: 200;	
+}
+
+#Score
+{
+	position: absolute;
+	left: 540px;
+	top: 7px;
+	font-family: "Arial";
+	font-size: 30px;
+	color: #FFFFFF;
+	z-index: 200;	
+}
+
+.til
+{
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	z-index: 20;	
+}
+
+.Spi
+{
+	position: absolute;
+	z-index: 60;
+	width: 64px;
+	height: 44px;
+	overflow: hidden;	
+}
+
+.Spimg
+{
+	position: absolute;
+	z-index: 70;
+	left: 0;
+	top: -20px;	
+}
+
+.Rck
+{
+	position: absolute;
+	z-index: 30;
+	width: 48px;
+	height: 48px;
+	overflow: hidden;	
+}
+
+.Rim
+{
+	position: absolute;
+	left: 0px;
+	top: 2px;	
+}
+
+#Doug
+{
+	position: absolute;
+	z-index: 100;
+	width: 48px;
+	height: 48px;
+	left: 352px;
+	top: 0px;
+	overflow: hidden;	
+}
+
+#Dig
+{
+	position: absolute;
+	left: -236px;
+	top: 0px;	
+}
+
+#Bomb
+{
+	position: absolute;
+	z-index: 120;
+	width: 48px;
+	height: 48px;
+	overflow: hidden;	
+}
+
+#Bimg
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;	
+}
+
+#Bomb1
+{
+	position: absolute;
+	z-index: 120;
+	width: 48px;
+	height: 48px;
+	overflow: hidden;	
+}
+
+#Bimg1
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;	
+}
+
+.ex
+{
+	position: absolute;
+	z-index: 140;
+	width: 48px;
+	height: 48px;
+	overflow: hidden;	
+}
+
+.expim
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;	
+}

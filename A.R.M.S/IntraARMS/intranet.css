@@ -1,0 +1,169 @@
+BODY {
+	font-family: comic sans ms;
+	background: "ffffcc";
+	margin: 0px 0px 0px 0px;
+}
+
+H1 {
+        color: "gray";
+	font-size: 32pt;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+H2 {
+        color: "gray";
+	font-size: 26pt;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+
+
+IMG.logo {
+	margin: 25px 0px 25px 0px;
+	width: 150;
+	height: 150;
+}
+
+
+TABLE.layout {
+	width: 100%;
+	height: 100%;
+
+	border-style: hidden;
+}
+
+TD.sidebar {
+	padding: 0px;
+
+	background: "green";
+	text-align: center;
+	vertical-align: top;
+	width: 200px;
+	margin: 0px;
+
+}
+
+TD.content {
+	padding: 30px;
+	text-align: left;
+	vertical-align: top;
+
+}
+
+DIV.menuItem { 
+	background: "ffffff";
+	text-align: left;
+
+	padding: 10px 15px 10px 15px;
+
+	margin: 5px 5px 5px 5px;
+
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+
+
+}
+
+
+DIV.login { 
+	width: 300;
+	background: "ffffff";
+
+	padding-top: 25px;
+	padding-bottom: 25px;
+	border-color: black;
+	border-width: 2px;
+}
+
+DIV.order { 
+	
+	background: "ffffff";
+
+	padding: 0px 40px 15px 40px;
+	margin: 5px 25px 5px 25px;
+
+	border-style: double;
+	border-color: black;
+	border-width: 2px;
+}
+
+DIV.account { 
+
+	text-align: left;
+	background: "ffffff";
+
+	padding: 5px 40px 15px 40px;
+	margin: 25px 25px 5px 25px;
+
+	border-style: double;
+	border-color: black;
+	border-width: 2px;
+}
+
+SPAN.loginBox {
+	width: 200px;
+	text-align: left;
+	font-size: 18;
+	color: "ffffff";
+	
+	padding: 0px 25px 0px 25px;
+
+	margin:  0px 0px 5px 0px;
+}
+
+
+SPAN.currentBarItem {
+	color: "000000";
+	background: "dddd88";
+	font-size: 18;
+	text-align:center;
+	width:200px;
+	height:30px;
+}
+
+A.sidebarItem {
+	color: "ffffaa";
+	background: "green";
+
+
+	font-size: 18;
+	text-decoration: underscore;
+	text-align:center;
+	padding: 0px;
+
+	width:200px;
+	height:30px;
+
+}
+
+A.sideLink {
+	color: "ffffaa";
+	font-size: 18;
+}
+
+span.red {
+        font-family: comic sans ms;
+	color: "red";
+	font-size: 26;
+}
+
+span.blue {
+        font-family: comic sans ms;
+	color: "#007FFF";
+	font-size: 26;
+}
+
+span.newsheader {
+        font-family: comic sans ms;
+	color: "orange";
+	font-size: 26;
+}
+
+span.newsline {
+        font-family: comic sans ms;
+	color: "orange";
+	font-size: 18;
+}

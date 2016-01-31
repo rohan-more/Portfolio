@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="AccountEditServlet.java">
+        <attr name="NbAttrURI" stringvalue="/AccountEditServlet"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="AccountEditServlet"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="AccountEditServlet2.java">
+        <attr name="NbAttrURI" stringvalue="/AccountEditServlet2"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="AccountEditServlet2"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="AccountInfoBean.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="AccountManagementServlet.java">
+        <attr name="NbAttrURI" stringvalue="/AccountManagementServlet"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="AccountManagementServlet"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="AccountServlet.java">
+        <attr name="NbAttrURI" stringvalue="/AccountServlet"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="AccountServlet"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="LoginServlet.java">
+        <attr name="NbAttrURI" stringvalue="/LoginServlet"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="LoginServlet"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="MenuEditServlet.java">
+        <attr name="NbAttrURI" stringvalue="/MenuEditServlet"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="MenuEditServlet"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="MenuInfoBean.java">
+        <attr name="class_dependency_java.io.Serializable" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+        <attr name="class_dependency_java.lang.Object" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="MenuManagementServlet.java">
+        <attr name="NbAttrURI" stringvalue="/MenuManagementServlet"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="MenuManagementServlet"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="MenuServlet.java">
+        <attr name="NbAttrURI" stringvalue="/MenuServlet"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="MenuServlet"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="MenuViewServlet.java">
+        <attr name="NbAttrURI" stringvalue="/MenuViewServlet"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="MenuViewServlet"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="SetRedirectServlet.java">
+        <attr name="NbAttrURI" stringvalue="/SetRedirectServlet"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="SetRedirectServlet"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="SignOutServlet.java">
+        <attr name="NbAttrURI" stringvalue="/SignOutServlet"/>
+        <attr name="class_dependency_javax.servlet.http.HttpServlet" stringvalue="SignOutServlet"/>
+        <attr name="org.netbeans.modules.web.IsServletFile" boolvalue="true"/>
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+    <fileobject name="StringEditor.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000078"/>
+    </fileobject>
+</attributes>
