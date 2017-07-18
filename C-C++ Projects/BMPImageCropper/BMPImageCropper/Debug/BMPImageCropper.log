@@ -1,0 +1,7 @@
+﻿  ImageCropper.cpp
+c:\users\rohan\documents\visual studio 2017\projects\imagecropper\babaroga\imagecropper.cpp(62): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(207): note: see declaration of 'fopen'
+c:\users\rohan\documents\visual studio 2017\projects\imagecropper\babaroga\imagecropper.cpp(119): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(207): note: see declaration of 'fopen'
+  BMPImageCropper.vcxproj -> c:\users\rohan\documents\visual studio 2017\Projects\BMPImageCropper\Debug\BMPImageCropper.exe
+  BMPImageCropper.vcxproj -> c:\users\rohan\documents\visual studio 2017\Projects\BMPImageCropper\Debug\BMPImageCropper.pdb (Partial PDB)
