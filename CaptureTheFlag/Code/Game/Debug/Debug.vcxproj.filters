@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="DebugObject.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="PixelCoordinates.h" />
+    <ClInclude Include="ConfigurationShapes.h" />
+    <ClInclude Include="IUIController.h" />
+    <ClInclude Include="Checkbox.h" />
+    <ClInclude Include="Slider.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="ConsoleMenu.h" />
+    <ClInclude Include="ConfigurationConsoleMenu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DebugObject.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="IUIController.cpp" />
+    <ClCompile Include="Checkbox.cpp" />
+    <ClCompile Include="Slider.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ConsoleMenu.cpp" />
+  </ItemGroup>
+</Project>

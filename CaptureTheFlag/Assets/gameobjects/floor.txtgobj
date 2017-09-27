@@ -1,0 +1,9 @@
+-- Gameobject Data for Floor
+return
+{
+	material_filepath = "materials/floor_material.txtmaterial",
+	mesh_filepath = "meshes/floor.txtmesh",
+	controller_name = "DefaultController",
+	position = {0.0,0.0,0.0},
+	eular_angles = {0.0,0.0,0.0},			
+}

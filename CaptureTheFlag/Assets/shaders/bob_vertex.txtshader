@@ -1,0 +1,41 @@
+/*
+	This is the vertex shader used to render meshes
+*/
+
+#include "shaders.inc"
+
+#if defined( EAE6320_PLATFORM_D3D )
+
+void main(
+	in const vec3 i_vertexPosition_local : POSITION,
+	in const vec4 i_color : COLOR,
+	in const vec2 i_UV : TEXCOORD,
+	out vec4 gl_Position : SV_POSITION,
+	out vec4 o_color : COLOR,
+	out vec2 o_UV : TEXCOORD
+	)
+#elif defined( EAE6320_PLATFORM_GL )
+
+	layout( location = 0 ) in vec3 i_vertexPosition_local;
+	layout( location = 1 ) in vec4 i_color;
+	layout( location = 2 ) in vec2 i_UV;
+	layout( location = 0 ) out vec4 o_color;
+	layout( location = 1 ) out vec2 o_UV;
+void main()
+#endif
+{
+	// Calculate the position of this vertex on screen
+	{
+		vec4 vertexPosition_local = vec4( i_vertexPosition_local.x, i_vertexPosition_local.y, i_vertexPosition_local.z, 1.0 );
+		float t = sin( g_elapsedSecondCount_total );
+		vertexPosition_local = vec4( vertexPosition_local.x ,vertexPosition_local.y + t,vertexPosition_local.z,1.0 );
+		vec4 vertexPosition_world = mul(vertexPosition_local, g_transform_localToWorld);
+		vec4 vertexPosition_camera = mul(vertexPosition_world, g_transform_worldToCamera);
+		gl_Position = mul(vertexPosition_camera, g_transform_cameraToScreen);
+	}
+	// Pass the input color and the texture coordinates to the fragment shader unchanged
+	{
+		o_color = i_color;
+		o_UV = i_UV;
+	}
+}

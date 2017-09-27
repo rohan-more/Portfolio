@@ -1,0 +1,9 @@
+-- Gameobject Data for Center
+return
+{
+	material_filepath = "materials/center_material.txtmaterial",
+	mesh_filepath = "meshes/center.txtmesh",
+	controller_name = "StandardRotationController",
+	position = {0.0,0.0,0.0},
+	eular_angles = {0.0,0.0,0.0},		
+}

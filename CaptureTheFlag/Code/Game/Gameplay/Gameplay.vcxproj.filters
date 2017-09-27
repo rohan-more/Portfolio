@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="StandardRotationController.cpp" />
+    <ClCompile Include="GameObject2D.cpp" />
+    <ClCompile Include="DefaultController.cpp" />
+    <ClCompile Include="TPSPlayerController.cpp" />
+    <ClCompile Include="FPSPlayerController.cpp" />
+    <ClCompile Include="FlagController.cpp" />
+    <ClCompile Include="ScoreZoneController.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="StandardRotationController.h" />
+    <ClInclude Include="GameObject2D.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="LocalAxes.h" />
+    <ClInclude Include="cbController.h" />
+    <ClInclude Include="DefaultController.h" />
+    <ClInclude Include="TPSPlayerController.h" />
+    <ClInclude Include="FPSPlayerController.h" />
+    <ClInclude Include="FlagController.h" />
+    <ClInclude Include="ScoreZoneController.h" />
+  </ItemGroup>
+</Project>

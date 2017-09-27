@@ -1,0 +1,65 @@
+--Mesh Data
+return
+{
+	-- This table contains vertices
+	-- Total number of vertices: 4
+	vertices =
+	{
+		-- This table contains positions(x,y,z)
+		positions =
+		{
+			{-50.00000,-0.00000,50.00000},
+			{50.00000,-0.00000,50.00000},
+			{-50.00000,0.00000,-50.00000},
+			{50.00000,0.00000,-50.00000},
+		},
+		-- This table contains colors(r,g,b,a)(a has a default value of 1.0 if you don't specify)
+		colors =
+		{
+			{1.00000,0.00000,0.50190,1.00000},
+			{0.00000,1.00000,0.50190,1.00000},
+			{1.00000,0.50190,0.00000,1.00000},
+			{0.50190,1.00000,0.00000,1.00000},
+		},
+		-- This table contains normals(nx,ny,nz)
+		normals =
+		{
+			{0.00000,1.00000,0.00000},
+			{0.00000,1.00000,0.00000},
+			{0.00000,1.00000,0.00000},
+			{0.00000,1.00000,0.00000},
+		},
+		-- This table contains tangents(tx,ty,tz)
+		tangents =
+		{
+			{1.00000,-0.00000,0.00000},
+			{1.00000,-0.00000,0.00000},
+			{1.00000,-0.00000,0.00000},
+			{1.00000,-0.00000,0.00000},
+		},
+		-- This table contains bitangents(btx,bty,btz)
+		bitangents =
+		{
+			{0.00000,0.00000,-1.00000},
+			{0.00000,0.00000,-1.00000},
+			{0.00000,0.00000,-1.00000},
+			{0.00000,0.00000,-1.00000},
+		},
+		-- This table contains texture coordinates(u,v)
+		texture_coordinates =
+		{
+			{0.00000,0.00000},
+			{1.00000,0.00000},
+			{0.00000,1.00000},
+			{1.00000,1.00000},
+		},
+	},
+	-- This table contains indices(triangles)
+	-- Total number of indices: 6
+	-- Total number of triangles: 2
+	indices =
+	{
+		0,1,2,
+		2,1,3,
+	},
+}

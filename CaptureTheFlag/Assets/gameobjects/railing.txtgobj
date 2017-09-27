@@ -1,0 +1,9 @@
+-- Gameobject Data for Railing
+return
+{
+	material_filepath = "materials/railing_material.txtmaterial",
+	mesh_filepath = "meshes/railing.txtmesh",
+	controller_name = "DefaultController",
+	position = {0.0,0.0,0.0},
+	eular_angles = {0.0,0.0,0.0},		
+}

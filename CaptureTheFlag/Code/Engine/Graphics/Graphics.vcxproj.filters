@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Direct3D">
+      <UniqueIdentifier>{540dbc1c-ae56-4a23-ade0-94964e444882}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenGL">
+      <UniqueIdentifier>{84ebcfe0-fce7-426e-abfe-f8b8c89c55c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cTexture">
+      <UniqueIdentifier>{076cd5ed-05b5-490b-b0e5-60c00a9628d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cRenderState">
+      <UniqueIdentifier>{868d8390-134c-41bb-99e6-fc0c26797db2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="OpenGL\Mesh.gl.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D\Mesh.d3d.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonData.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Direct3D\ConstantBuffer.d3d.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\ConstantBuffer.gl.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\Effect.gl.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D\Effect.d3d.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="ConstantBuffer.cpp" />
+    <ClCompile Include="cTexture\cTexture.cpp">
+      <Filter>cTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D\cTexture.d3d.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\cTexture.gl.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="cRenderState\cRenderState.cpp">
+      <Filter>cRenderState</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D\cRenderState.d3d.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\cRenderState.gl.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="cSprite.cpp" />
+    <ClCompile Include="Direct3D\cSprite.d3d.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\cSprite.gl.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\UtilityFunctions.gl.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="OpenGL\Font.gl.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D\Font.d3d.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Graphics.h" />
+    <ClInclude Include="OpenGL\Includes.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration.h" />
+    <ClInclude Include="CommonData.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshData.h" />
+    <ClInclude Include="ConstantBufferData.h" />
+    <ClInclude Include="ConstantBuffer.h" />
+    <ClInclude Include="Effect.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="cTexture\Internal.h">
+      <Filter>cTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="cTexture.h" />
+    <ClInclude Include="cRenderState.h" />
+    <ClInclude Include="cSprite.h" />
+    <ClInclude Include="OpenGL\UtilityFunctions.gl.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="FontData.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="SpriteData.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cRenderState\cRenderState.inl">
+      <Filter>cRenderState</Filter>
+    </None>
+    <None Include="cTexture\cTexture.inl">
+      <Filter>cTexture</Filter>
+    </None>
+  </ItemGroup>
+</Project>

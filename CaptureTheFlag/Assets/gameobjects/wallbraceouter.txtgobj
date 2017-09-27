@@ -1,0 +1,9 @@
+-- Gameobject Data for Wall Brace Outer
+return
+{
+	material_filepath = "materials/wallbrace_material.txtmaterial",
+	mesh_filepath = "meshes/wallbraceouter.txtmesh",
+	controller_name = "DefaultController",
+	position = {0.0,0.0,0.0},
+	eular_angles = {0.0,0.0,0.0},	
+}
