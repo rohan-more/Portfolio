@@ -19,3 +19,10 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+# Intellisense
+*.sdf
+*.opensdf
+/ipch
+*.VC.db
+*.VC.VC.opendb
