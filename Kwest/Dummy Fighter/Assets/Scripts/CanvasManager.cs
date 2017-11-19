@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class CanvasManager : MonoBehaviour {
 
     // Use this for initialization
@@ -84,7 +84,8 @@ public class CanvasManager : MonoBehaviour {
    void FightButtonClicked()
     {
         ListOfActions();
-        CollectActionData();
+        DontDestroyOnLoad(transform.gameObject);
+        SceneManager.LoadScene("Fight");
     }
 
     void UndoButtonClicked()
