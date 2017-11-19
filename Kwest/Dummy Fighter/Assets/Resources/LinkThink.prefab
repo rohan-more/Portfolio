@@ -38,11 +38,10 @@ GameObject:
   - component: {fileID: 224925375607275640}
   - component: {fileID: 222302475156151836}
   - component: {fileID: 114426642886369222}
-  - component: {fileID: 114226591759829190}
   - component: {fileID: 114789414106808724}
+  - component: {fileID: 61654679159690034}
   - component: {fileID: 114440459695605890}
   - component: {fileID: 225983906281759982}
-  - component: {fileID: 61654679159690034}
   - component: {fileID: 114494409604881320}
   m_Layer: 5
   m_Name: LinkThink
@@ -274,19 +273,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114226591759829190
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1129754620263288}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a488b04fb86d24cb1bb14f22fafd85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dummy: {fileID: 0}
-  originalParent: {fileID: 0}
 --- !u!114 &114301178465933724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -491,8 +477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5525618e9c0be234fba5d85b4d27e370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dummy: {fileID: 0}
-  originalParent: {fileID: 0}
 --- !u!114 &114547892999409798
 MonoBehaviour:
   m_ObjectHideFlags: 1

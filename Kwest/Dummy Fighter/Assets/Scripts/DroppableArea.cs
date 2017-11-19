@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DroppableArea : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
+public class DroppableArea : MonoBehaviour, IDropHandler {
 
 	// Use this for initialization
 	void Start () {
 		
 	}
-    public void OnPointerEnter(PointerEventData eventData)
+ 
+    public void OnPointerClick(PointerEventData eventData)
     {
 
     }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-
-    }
     public void OnDrop(PointerEventData eventData)
     {
         DraggableItem dragScript = eventData.pointerDrag.GetComponent<DraggableItem>();

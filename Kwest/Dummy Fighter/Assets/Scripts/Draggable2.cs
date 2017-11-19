@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
 {
 
     // Use this for initialization
@@ -13,72 +13,119 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     const float PREFERRED_WIDTH = 214.87f;
     //GameObject linksLibrary_Dummy;
     GameObject dummy;
-
+    bool selected;
     GameObject canvas;
+    Image thisImage;
      Transform originalParent;
+    string _name;
+    public bool IsDragable;
     void Start()
     {
         canvas = GameObject.Find("Canvas");
         _content = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("ChainInspector").transform.Find("Viewport").transform.Find("Content").gameObject;
         originalParent = transform.parent;
-       // linksLibrary_Dummy = new GameObject();
-       //linksLibrary_Dummy.name = "LinkLibrary";
-
+        _name = gameObject.name;
+        // linksLibrary_Dummy = new GameObject();
+        //linksLibrary_Dummy.name = "LinkLibrary";
+        thisImage = GetComponent<Image>();
+        IsDragable = true;
 
     }
 
 
     public void OnBeginDrag(PointerEventData eventdata)
     {
-        transform.SetParent(canvas.transform);
-        LayoutElement newLinkLayout = GetComponent<LayoutElement>();
-        newLinkLayout.enabled = true;
-        newLinkLayout.preferredHeight = PREFERRED_HEIGHT;
-        newLinkLayout.preferredWidth = PREFERRED_WIDTH;
-        newLinkLayout.flexibleHeight = 0;
-        newLinkLayout.flexibleWidth = 0;
+        if(IsDragable)
+        {
+            transform.SetParent(canvas.transform);
+            LayoutElement newLinkLayout = GetComponent<LayoutElement>();
+            newLinkLayout.enabled = true;
+            newLinkLayout.preferredHeight = PREFERRED_HEIGHT;
+            newLinkLayout.preferredWidth = PREFERRED_WIDTH;
+            newLinkLayout.flexibleHeight = 0;
+            newLinkLayout.flexibleWidth = 0;
 
-       // CreateDummy(linksLibrary_Dummy);
-        CreateDummy();
+            CreateDummy();
+        }
+        
 
     }
     public void OnDrag(PointerEventData eventdata)
     {
-       transform.SetParent(_content.transform);
-        transform.position = eventdata.position;
-
-        Debug.Log(transform.name);
-
-     
-        PlaceDummyInContent(dummy);
+        if (IsDragable)
+        {
+            transform.SetParent(_content.transform);
+            transform.position = eventdata.position;
+            PlaceDummyInContent(dummy);
+        }
+            
     }
     public void OnEndDrag(PointerEventData eventdata)
     {
         // Debug.Log("OnEndDrag");
-        transform.SetSiblingIndex(dummy.transform.GetSiblingIndex());
-        DestroyDummy();
+        if(IsDragable)
+        {
+            transform.SetSiblingIndex(dummy.transform.GetSiblingIndex());
+            DestroyDummy();
+            RecreateLink();
+            transform.Find("GoToDisplay").gameObject.SetActive(true);
+        }
+      
+        IsDragable = false;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+       
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (transform.parent == _content.transform && !selected)
+        {
+            selected = true;
+            if (CanvasManager.Instance._drag2PreviousScript != null)
+            {
+                CanvasManager.Instance._drag2PreviousScript.selected = false;
+                CanvasManager.Instance._drag2PreviousScript.thisImage.color = Color.white;
+            }
+            CanvasManager.Instance._drag2PreviousScript = this;
+            thisImage.color = Color.green;
+        }
+    }
+
+  
+
+
+    /// <summary>
+    //Recreate the original link
+    /// </summary>
+    void RecreateLink()
+    {
         CanvasManager.Action actionType = transform.GetComponent<ActionInfo>().actionType;
-       GameObject newLink = Instantiate(gameObject, originalParent);
+        GameObject newLink = Instantiate(gameObject, originalParent);
+        newLink.name = _name;
         LayoutElement newLinkLayout = newLink.GetComponent<LayoutElement>();
         RectTransform rect = newLink.GetComponent<RectTransform>();
         newLinkLayout.enabled = false;
-        rect.sizeDelta = new Vector2(PREFERRED_WIDTH, PREFERRED_HEIGHT); 
-        //newLinkLayout.minWidth = 0;
-        //newLinkLayout.minHeight = 0;
-        //newLinkLayout.flexibleHeight = 0;
-        //newLinkLayout.preferredWidth = 0;
-        //newLinkLayout.flexibleHeight = 0;
-        //newLinkLayout.flexibleWidth = 0;
+        rect.sizeDelta = new Vector2(PREFERRED_WIDTH, PREFERRED_HEIGHT);
+        newLink.transform.Find("GoToDisplay").gameObject.SetActive(false);
+        newLink.transform.GetComponent<Image>().color = Color.white;
         newLink.transform.SetSiblingIndex((int)actionType);
-
-       
-
-
     }
 
+    /// <summary>
+    //Create a dummy gameobject to be placed in ChainInspector Window
+    /// </summary>
     void CreateDummy()
     {
         dummy = new GameObject();
+
         dummy.transform.SetParent(_content.transform);
         LayoutElement _layElement = dummy.AddComponent<LayoutElement>();
         _layElement.preferredHeight = PREFERRED_HEIGHT;
@@ -89,12 +136,18 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         dummy.transform.SetSiblingIndex(transform.GetSiblingIndex());
     }
 
+    /// <summary>
+    //Destroy the dummy gameobject
+    /// </summary>
     void DestroyDummy()
     {
         Destroy(dummy);
         //Destroy(linksLibrary_Dummy);
     }
 
+    /// <summary>
+    // move dummy w.r.t dragged object
+    /// </summary>
 
     void PlaceDummyInContent(GameObject dummy)
     {
