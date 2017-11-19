@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
+public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
 
     // Use this for initialization
     GameObject _content;
     const float PREFERRED_HEIGHT = 111.93f;
     const float PREFERRED_WIDTH = 214.87f;
+
     //GameObject linksLibrary_Dummy;
     GameObject dummy;
     bool selected;
@@ -19,6 +20,7 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
      Transform originalParent;
     string _name;
     public bool IsDragable;
+    public int siblingIndex;
     void Start()
     {
         canvas = GameObject.Find("Canvas");
@@ -44,6 +46,20 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             newLinkLayout.preferredWidth = PREFERRED_WIDTH;
             newLinkLayout.flexibleHeight = 0;
             newLinkLayout.flexibleWidth = 0;
+            if(CanvasManager.Instance.transform.childCount > 0)
+            {
+                CanvasManager.Instance.NewLinkDragged();
+            }
+
+            if(CanvasManager.Instance._redoButton.interactable == true)
+            {
+                CanvasManager.Instance._redoButton.interactable = false;
+            }
+
+            if (CanvasManager.Instance._undoButton.interactable == false)
+            {
+                CanvasManager.Instance._undoButton.interactable = true;
+            }
 
             CreateDummy();
         }
@@ -66,23 +82,18 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if(IsDragable)
         {
             transform.SetSiblingIndex(dummy.transform.GetSiblingIndex());
+            siblingIndex = transform.GetSiblingIndex();
             DestroyDummy();
             RecreateLink();
             transform.Find("GoToDisplay").gameObject.SetActive(true);
+            CanvasManager.Action action_type = transform.GetComponent<ActionInfo>().actionType;
+            CanvasManager.Instance.PushIntoUndoStack((int)action_type);
         }
       
         IsDragable = false;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-       
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        
-    }
+ 
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -107,6 +118,7 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     /// </summary>
     void RecreateLink()
     {
+        
         CanvasManager.Action actionType = transform.GetComponent<ActionInfo>().actionType;
         GameObject newLink = Instantiate(gameObject, originalParent);
         newLink.name = _name;
@@ -117,6 +129,8 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         newLink.transform.Find("GoToDisplay").gameObject.SetActive(false);
         newLink.transform.GetComponent<Image>().color = Color.white;
         newLink.transform.SetSiblingIndex((int)actionType);
+        
+
     }
 
     /// <summary>
@@ -169,7 +183,7 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             }
         }
 
-        Debug.Log(_content.transform.childCount);
+        //Debug.Log(_content.transform.childCount);
         dummy.transform.SetSiblingIndex(newIndex);
     }
 

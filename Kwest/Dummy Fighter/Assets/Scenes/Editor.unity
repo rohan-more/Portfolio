@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.9485294, g: 0.24410684, b: 0.24410684, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1310,6 +1310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDragable: 0
+  siblingIndex: 0
 --- !u!1 &465327607
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,7 +2027,7 @@ Prefab:
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 117.43667
       objectReference: {fileID: 0}
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
@@ -2051,7 +2052,7 @@ Prefab:
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
@@ -2061,7 +2062,7 @@ Prefab:
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
@@ -2858,6 +2859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDragable: 0
+  siblingIndex: 0
 --- !u!1 &828702568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,7 +2954,6 @@ GameObject:
   - component: {fileID: 830984177}
   - component: {fileID: 830984182}
   - component: {fileID: 830984183}
-  - component: {fileID: 830984176}
   m_Layer: 5
   m_Name: LinkDodge
   m_TagString: Untagged
@@ -2960,18 +2961,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &830984176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 830984175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5525618e9c0be234fba5d85b4d27e370, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDragable: 0
 --- !u!61 &830984177
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3090,6 +3079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDragable: 0
+  siblingIndex: 0
 --- !u!224 &848964554
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3848,7 +3838,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.9852941, g: 0.39121974, b: 0.39121974, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4029,7 +4019,7 @@ Prefab:
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1241.8033
       objectReference: {fileID: 0}
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
@@ -4054,7 +4044,7 @@ Prefab:
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
@@ -4064,7 +4054,7 @@ Prefab:
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
@@ -5460,6 +5450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDragable: 0
+  siblingIndex: 0
 --- !u!1 &1681256909
 GameObject:
   m_ObjectHideFlags: 0
@@ -6052,6 +6043,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drag2PreviousScript: {fileID: 0}
+  _undoButton: {fileID: 0}
+  _redoButton: {fileID: 0}
 --- !u!1 &1959287034
 GameObject:
   m_ObjectHideFlags: 0
