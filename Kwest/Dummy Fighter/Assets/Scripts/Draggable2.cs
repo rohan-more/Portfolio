@@ -14,22 +14,28 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     //GameObject linksLibrary_Dummy;
     GameObject dummy;
-    bool selected;
+    public bool selected;
     GameObject canvas;
     Image thisImage;
      Transform originalParent;
     string _name;
     public bool IsDragable;
     public int siblingIndex;
+    public int IdleValue;
+    public int AttackValue;
+    public int DodgeValue;
+
     void Start()
     {
         canvas = GameObject.Find("Canvas");
         _content = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("ChainInspector").transform.Find("Viewport").transform.Find("Content").gameObject;
         originalParent = transform.parent;
         _name = gameObject.name;
-        // linksLibrary_Dummy = new GameObject();
-        //linksLibrary_Dummy.name = "LinkLibrary";
-        thisImage = GetComponent<Image>();
+       IdleValue = 0;
+       AttackValue=  0;
+       DodgeValue= 0;
+ 
+       thisImage = GetComponent<Image>();
         IsDragable = true;
 
     }
@@ -85,7 +91,11 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             siblingIndex = transform.GetSiblingIndex();
             DestroyDummy();
             RecreateLink();
-            transform.Find("GoToDisplay").gameObject.SetActive(true);
+            if(transform.name== "LinkThink"|| transform.name == "LinkWatch")
+            {
+                transform.Find("GoToDisplay").gameObject.SetActive(true);
+            }
+            
             CanvasManager.Action action_type = transform.GetComponent<ActionInfo>().actionType;
             CanvasManager.Instance.PushIntoUndoStack((int)action_type);
         }
@@ -107,6 +117,7 @@ public class Draggable2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             }
             CanvasManager.Instance._drag2PreviousScript = this;
             thisImage.color = Color.green;
+            
         }
     }
 

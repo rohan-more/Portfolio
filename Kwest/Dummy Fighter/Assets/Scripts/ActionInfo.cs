@@ -6,6 +6,7 @@ public class ActionInfo : MonoBehaviour {
 
     // Use this for initialization
     public CanvasManager.Action actionType;
+
 	void Start ()
     {
         CheckActionType();

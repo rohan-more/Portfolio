@@ -1309,8 +1309,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5525618e9c0be234fba5d85b4d27e370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selected: 0
   IsDragable: 0
   siblingIndex: 0
+  IdleValue: 0
+  AttackValue: 0
+  DodgeValue: 0
 --- !u!1 &465327607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1479,7 @@ GameObject:
   - component: {fileID: 529263091}
   - component: {fileID: 529263090}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2032,7 +2036,7 @@ Prefab:
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -65.9695
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
@@ -2858,8 +2862,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5525618e9c0be234fba5d85b4d27e370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selected: 0
   IsDragable: 0
   siblingIndex: 0
+  IdleValue: 0
+  AttackValue: 0
+  DodgeValue: 0
 --- !u!1 &828702568
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,8 +3086,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5525618e9c0be234fba5d85b4d27e370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selected: 0
   IsDragable: 0
   siblingIndex: 0
+  IdleValue: 0
+  AttackValue: 0
+  DodgeValue: 0
 --- !u!224 &848964554
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4024,7 +4036,7 @@ Prefab:
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -65.9695
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
@@ -5449,8 +5461,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5525618e9c0be234fba5d85b4d27e370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selected: 0
   IsDragable: 0
   siblingIndex: 0
+  IdleValue: 0
+  AttackValue: 0
+  DodgeValue: 0
 --- !u!1 &1681256909
 GameObject:
   m_ObjectHideFlags: 0
@@ -6046,6 +6062,8 @@ MonoBehaviour:
   Action_List: []
   _undoButton: {fileID: 0}
   _redoButton: {fileID: 0}
+  _plusButton: {fileID: 0}
+  _minusButton: {fileID: 0}
 --- !u!1 &1959287034
 GameObject:
   m_ObjectHideFlags: 0

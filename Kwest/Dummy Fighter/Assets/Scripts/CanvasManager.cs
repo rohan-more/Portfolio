@@ -17,6 +17,9 @@ public class CanvasManager : MonoBehaviour {
     Button _fightButton;
     public Button _undoButton;
     public Button _redoButton;
+    public Button _plusButton;
+    public Button _minusButton;
+
     Button _exitButton;
     private static CanvasManager _instance;
     public static CanvasManager Instance
@@ -37,6 +40,8 @@ public class CanvasManager : MonoBehaviour {
         _fightButton = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("ButtonFight").GetComponent<Button>();
         _undoButton = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("ButtonUndo").GetComponent<Button>();
         _redoButton = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("ButtonRedo").GetComponent<Button>();
+        _plusButton = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("LinksLibrary").transform.Find("IconPlus").transform.Find("Button").GetComponent<Button>();
+        _minusButton = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("LinksLibrary").transform.Find("IconMinus").transform.Find("Button").GetComponent<Button>();
         _exitButton = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("ButtonClose").GetComponent<Button>();
 
         _drag2PreviousScript = null;
@@ -50,6 +55,8 @@ public class CanvasManager : MonoBehaviour {
         _fightButton.onClick.AddListener(FightButtonClicked);
         _undoButton.onClick.AddListener(UndoButtonClicked);
         _redoButton.onClick.AddListener(RedoButtonClicked);
+        _plusButton.onClick.AddListener(PlusButtonClicked);
+        _minusButton.onClick.AddListener(MinusButtonClicked);
         _exitButton.onClick.AddListener(ExitButtonClicked);
 
 
@@ -87,6 +94,39 @@ public class CanvasManager : MonoBehaviour {
         DontDestroyOnLoad(transform.gameObject);
         SceneManager.LoadScene("Fight");
     }
+
+    void PlusButtonClicked()
+    {
+        _drag2PreviousScript.IdleValue++;
+        _drag2PreviousScript.AttackValue++;
+        _drag2PreviousScript.DodgeValue++;
+        if (_drag2PreviousScript.selected && _drag2PreviousScript.transform.Find("GoToDisplay").gameObject.activeSelf)
+        {
+            _drag2PreviousScript.transform.Find("GoToDisplay").transform.Find("InCaseIdle").transform.Find("TextValue").GetComponent<Text>().text = _drag2PreviousScript.IdleValue.ToString();
+            _drag2PreviousScript.transform.Find("GoToDisplay").transform.Find("InCaseAttack").transform.Find("TextValue").GetComponent<Text>().text = _drag2PreviousScript.AttackValue.ToString();
+            _drag2PreviousScript.transform.Find("GoToDisplay").transform.Find("InCaseDodge").transform.Find("TextValue").GetComponent<Text>().text = _drag2PreviousScript.DodgeValue.ToString();
+        }
+       
+    }
+
+    void MinusButtonClicked()
+    {
+        _drag2PreviousScript.IdleValue--;
+        _drag2PreviousScript.AttackValue--;
+        _drag2PreviousScript.DodgeValue--;
+
+        if (_drag2PreviousScript.selected && _drag2PreviousScript.transform.Find("GoToDisplay").gameObject.activeSelf)
+        {
+            _drag2PreviousScript.transform.Find("GoToDisplay").transform.Find("InCaseIdle").transform.Find("TextValue").GetComponent<Text>().text = _drag2PreviousScript.IdleValue.ToString();
+            _drag2PreviousScript.transform.Find("GoToDisplay").transform.Find("InCaseAttack").transform.Find("TextValue").GetComponent<Text>().text = _drag2PreviousScript.AttackValue.ToString();
+            _drag2PreviousScript.transform.Find("GoToDisplay").transform.Find("InCaseDodge").transform.Find("TextValue").GetComponent<Text>().text = _drag2PreviousScript.DodgeValue.ToString();
+        }
+
+    }
+
+
+
+
 
     void UndoButtonClicked()
     {

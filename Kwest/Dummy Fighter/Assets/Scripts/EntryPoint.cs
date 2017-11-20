@@ -12,10 +12,21 @@ public class EntryPoint : MonoBehaviour
     {
         stateMachine = new StateMachine();
 
+        Action actionScript = new Action();
+        Idle idleScript = new Idle();
+        Dodge dodgeScript = new Dodge();
+        Watch watchScript = new Watch();
+        NextState nextStateScript = new NextState();
+        Think thinkScript = new Think();
+
+        stateMachine.SetActiveState("Idle");
+
+
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+        stateMachine.Execute();
 	}
 }
