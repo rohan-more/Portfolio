@@ -12,7 +12,7 @@ public class CanvasManager : MonoBehaviour {
  
     public Stack<int> Redo_List;
     public Stack<int> Undo_List;
-    public List<GameObject> Action_List;
+    public List<Action> Action_List;
     GameObject _content;
     Button _fightButton;
     public Button _undoButton;
@@ -47,7 +47,7 @@ public class CanvasManager : MonoBehaviour {
         _drag2PreviousScript = null;
         Redo_List = new Stack<int>();
         Undo_List = new Stack<int>();
-        Action_List = new List<GameObject>();
+        Action_List = new List<Action>();
         _redoButton.interactable = false;
         _undoButton.interactable = false;
 
@@ -181,7 +181,7 @@ public class CanvasManager : MonoBehaviour {
     {
         foreach (Transform child in _content.transform)
         {
-            Action_List.Add(child.gameObject);
+            Action_List.Add(child.transform.GetComponent<ActionInfo>().actionType);
         }
     }
 

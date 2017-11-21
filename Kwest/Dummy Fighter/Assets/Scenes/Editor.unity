@@ -4031,7 +4031,7 @@ Prefab:
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1241.8033
+      value: 1262.9535
       objectReference: {fileID: 0}
     - target: {fileID: 224261724021905026, guid: 7900849e1185bd646a1313e507e41211,
         type: 2}
@@ -6059,7 +6059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drag2PreviousScript: {fileID: 0}
-  Action_List: []
+  Action_List: 
   _undoButton: {fileID: 0}
   _redoButton: {fileID: 0}
   _plusButton: {fileID: 0}

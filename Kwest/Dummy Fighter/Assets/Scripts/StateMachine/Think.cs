@@ -16,7 +16,7 @@ namespace State_Machine
             }
         }
 
-        public override void Execute()
+        public override void Execute(Animator anim)
         {
 
 

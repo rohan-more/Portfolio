@@ -264,4 +264,12 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1
+    functionName: AttackRtnEnd
+    data: 
+    objectReferenceParameter: {fileID: 1908061844982578, guid: a74983bd6b866c843a6df1afaa53393b,
+      type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

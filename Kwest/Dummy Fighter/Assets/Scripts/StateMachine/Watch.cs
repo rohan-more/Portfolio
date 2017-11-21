@@ -8,6 +8,7 @@ namespace State_Machine
     {
 
         private const string _name = "WatchState";
+        int choice;
         public override string Name
         {
             get
@@ -16,9 +17,30 @@ namespace State_Machine
             }
         }
 
-        public override void Execute()
+        public override void Enter()
         {
+            base.Enter();
 
+            choice = Random.Range(1, 100);
+
+            if(choice < 50)
+            {
+
+            }
+
+            else
+            {
+
+            }
+
+
+            Debug.Log("JIIII");
+
+        }
+
+        public override void Execute(Animator anim)
+        {
+          
 
         }
 

@@ -19,20 +19,25 @@ public class ImageAnimation : MonoBehaviour {
 
     }
 	
-    public void AnimationEnded()
+    public void EncounterEnded()
     {
-        //_fightAnim.enabled = true;
         if (_dummyAnim.GetBool("hasEncounterEnded"))
             {
                 _fightAnim.Play("FightAnimation");
             }
-             _dummyAnim.SetBool("hasEncounterEnded", false);
-            _fightImage.SetActive(false);
-        
+          
     }
 
-	// Update is called once per frame
-	void Update () {
+    public void FightAnimationEnded()
+    {
+        _dummyAnim.SetBool("hasEncounterEnded", false);
+        _fightImage.SetActive(false);
+    }
+
+
+    // Update is called once per frame
+    void Update ()
+    {
        
 
     }

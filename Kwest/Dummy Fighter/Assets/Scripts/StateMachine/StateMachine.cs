@@ -8,6 +8,8 @@ namespace State_Machine
     {
         private Dictionary<string, State> states;
         private State _currentState = null;
+        public Animator _anim;
+        public int currentStateNumber;
         private State currentState
         {
             get
@@ -20,13 +22,19 @@ namespace State_Machine
                 _currentState.Enter();
             }
         }
-        public StateMachine()
+        public StateMachine(Animator anim)
         {
             states = new Dictionary<string, State>();
+            _anim = anim;
+            currentStateNumber = 0;
         }
         public void AddState(State state)
         {
             states.Add(state.Name, state);
+        }
+        public Animator GetAnimator()
+        {
+            return _anim;
         }
 
         public bool RemoveState(State state)
@@ -44,6 +52,7 @@ namespace State_Machine
             try
             {
                 currentState = states[state.Name];
+                currentState.Enter();
             }
             catch (KeyNotFoundException)
             {
@@ -56,6 +65,7 @@ namespace State_Machine
             try
             {
                 currentState = states[name];
+                currentState.Enter();
             }
             catch (KeyNotFoundException)
             {
@@ -72,7 +82,7 @@ namespace State_Machine
         {
             if (currentState != null)
             {
-                currentState.Execute();
+                currentState.Execute(_anim);
             }
             else
             {
