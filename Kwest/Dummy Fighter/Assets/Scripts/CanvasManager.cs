@@ -215,7 +215,7 @@ public class CanvasManager : MonoBehaviour {
 
     int Chance()
     {
-        int chance = Random.Range(1, 100);
+        int chance = Random.Range(1, 100); // 50% chance
         return chance;
     }
 
@@ -224,7 +224,7 @@ public class CanvasManager : MonoBehaviour {
         int watchChance = Chance();
         stateNumber = 0;
         //for(int z=0;z<5;z++)
-        if (watchChance < 50)
+        if (watchChance < 50) 
         {
             {
                // Debug.Log(Test_Enemy[stateNumber]);
@@ -257,9 +257,41 @@ public class CanvasManager : MonoBehaviour {
                             stateNumber++;
                             break;
                         case Action.WATCH:
-                            stateNumber++;
+                            if (Action_List[stateNumber + 1] != Action.ATTACK)
+                            {
+                                for (int i = stateNumber + 1; i < Action_List.Count; i++)
+                                {
+                                    if (Action_List[i] == Action.ATTACK)
+                                    {
+                                        Action tempAction = Action_List[stateNumber + 1];
+                                        Action_List[stateNumber + 1] = Action_List[i];
+                                        Action_List[i] = tempAction;
+                                        break;
+
+                                    }
+                                }
+
+                                stateNumber++;
+                            }
+                           
                             break;
                         case Action.THINK:
+                            if (Action_List[stateNumber + 1] != Action.THINK)
+                            {
+                                for (int i = stateNumber + 1; i < Action_List.Count; i++)
+                                {
+                                    if (Action_List[i] == Action.THINK)
+                                    {
+                                        Action tempAction = Action_List[stateNumber + 1];
+                                        Action_List[stateNumber + 1] = Action_List[i];
+                                        Action_List[i] = tempAction;
+                                        break;
+
+                                    }
+                                }
+
+                                stateNumber++;
+                            }
                             stateNumber++;
                             break;
 
