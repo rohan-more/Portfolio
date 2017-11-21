@@ -24,6 +24,7 @@ public class CanvasManager : MonoBehaviour {
     public Button _minusButton;
     public int stateNumber = 0;
     Button _exitButton;
+    public SaveData saveDataScript;
     private static CanvasManager _instance;
     public static CanvasManager Instance
     {
@@ -46,6 +47,7 @@ public class CanvasManager : MonoBehaviour {
         _plusButton = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("LinksLibrary").transform.Find("IconPlus").transform.Find("Button").GetComponent<Button>();
         _minusButton = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("LinksLibrary").transform.Find("IconMinus").transform.Find("Button").GetComponent<Button>();
         _exitButton = GameObject.Find("Canvas").transform.Find("MainPanel").transform.Find("ButtonClose").GetComponent<Button>();
+        saveDataScript = gameObject.GetComponent<SaveData>();
 
         _drag2PreviousScript = null;
         Redo_List = new Stack<int>();
@@ -93,9 +95,18 @@ public class CanvasManager : MonoBehaviour {
 
    void FightButtonClicked()
     {
-        ListOfActions();
+        if(_content.transform.childCount > 0)
+        {
+            ListOfActions();
+            saveDataScript.WriteToFile();
+        }
+        else
+        {
+           Action_List =  saveDataScript.ReadSaveData();
+        }
+        
         FillEnemyList();
-        ChangePlayerList();
+       ChangePlayerList();
 
         DontDestroyOnLoad(transform.gameObject);
         SceneManager.LoadScene("Fight");
@@ -103,6 +114,8 @@ public class CanvasManager : MonoBehaviour {
 
     void PlusButtonClicked()
     {
+        //saveDataScript.ReadSaveData();
+        GetComponent<SaveData>().ReadSaveData();
         _drag2PreviousScript.IdleValue++;
         _drag2PreviousScript.AttackValue++;
         _drag2PreviousScript.DodgeValue++;
@@ -112,7 +125,7 @@ public class CanvasManager : MonoBehaviour {
             _drag2PreviousScript.transform.Find("GoToDisplay").transform.Find("InCaseAttack").transform.Find("TextValue").GetComponent<Text>().text = _drag2PreviousScript.AttackValue.ToString();
             _drag2PreviousScript.transform.Find("GoToDisplay").transform.Find("InCaseDodge").transform.Find("TextValue").GetComponent<Text>().text = _drag2PreviousScript.DodgeValue.ToString();
         }
-       
+
     }
 
     void MinusButtonClicked()
@@ -200,18 +213,7 @@ public class CanvasManager : MonoBehaviour {
     }
 
 
- void CollectActionData()
-    {
-         for(int i=0;i< _content.transform.childCount;i++)
-        {
-            //if (_content.transform.childCount > 0)
-            {
-                CanvasManager.Action action_type = _content.transform.GetChild(i).GetComponent<ActionInfo>().actionType;
-                PushIntoUndoStack((int)action_type);
-            }
-        }
-      
-    }
+
 
     int Chance()
     {
@@ -223,89 +225,94 @@ public class CanvasManager : MonoBehaviour {
     {
         int watchChance = Chance();
         stateNumber = 0;
-        //for(int z=0;z<5;z++)
-        if (watchChance < 50) 
+        if (watchChance < 50)
         {
+            for (int z = 0; z < 5; z++)
+
             {
-               // Debug.Log(Test_Enemy[stateNumber]);
-               if(stateNumber < Test_Enemy.Count - 1)
                 {
-                    Action enemyAction = Test_Enemy[stateNumber + 1];
-
-                    switch (enemyAction)
+                    // Debug.Log(Test_Enemy[stateNumber]);
+                    if (stateNumber < Test_Enemy.Count - 1)
                     {
-                        case Action.ATTACK:
-                            if (Action_List[stateNumber + 1] != Action.DODGE)
-                            {
-                                for (int i = stateNumber + 1; i < Action_List.Count; i++)
-                                {
-                                    if (Action_List[i] == Action.DODGE)
-                                    {
-                                        Action tempAction = Action_List[stateNumber + 1];
-                                        Action_List[stateNumber + 1] = Action_List[i];
-                                        Action_List[i] = tempAction;
-                                        break;
+                        Action enemyAction = Test_Enemy[stateNumber + 1];
 
+                        switch (enemyAction)
+                        {
+                            case Action.ATTACK:
+                                if (Action_List[stateNumber + 1] != Action.DODGE)
+                                {
+                                    for (int i = stateNumber + 1; i < Action_List.Count; i++)
+                                    {
+                                        if (Action_List[i] == Action.DODGE)
+                                        {
+                                            Action tempAction = Action_List[stateNumber + 1];
+                                            Action_List[stateNumber + 1] = Action_List[i];
+                                            Action_List[i] = tempAction;
+                                            break;
+
+                                        }
                                     }
+
+                                    stateNumber++;
+                                }
+                                break;
+
+                            case Action.DODGE:
+                                stateNumber++;
+                                break;
+                            case Action.WATCH:
+                                if (Action_List[stateNumber + 1] != Action.ATTACK)
+                                {
+                                    for (int i = stateNumber + 1; i < Action_List.Count; i++)
+                                    {
+                                        if (Action_List[i] == Action.ATTACK)
+                                        {
+                                            Action tempAction = Action_List[stateNumber + 1];
+                                            Action_List[stateNumber + 1] = Action_List[i];
+                                            Action_List[i] = tempAction;
+                                            break;
+
+                                        }
+                                    }
+
+                                    stateNumber++;
                                 }
 
-                                stateNumber++;
-                            }
-                            break;
-
-                        case Action.DODGE:
-                            stateNumber++;
-                            break;
-                        case Action.WATCH:
-                            if (Action_List[stateNumber + 1] != Action.ATTACK)
-                            {
-                                for (int i = stateNumber + 1; i < Action_List.Count; i++)
+                                break;
+                            case Action.THINK:
+                                if (Action_List[stateNumber + 1] != Action.THINK)
                                 {
-                                    if (Action_List[i] == Action.ATTACK)
+                                    for (int i = stateNumber + 1; i < Action_List.Count; i++)
                                     {
-                                        Action tempAction = Action_List[stateNumber + 1];
-                                        Action_List[stateNumber + 1] = Action_List[i];
-                                        Action_List[i] = tempAction;
-                                        break;
+                                        if (Action_List[i] == Action.THINK)
+                                        {
+                                            Action tempAction = Action_List[stateNumber + 1];
+                                            Action_List[stateNumber + 1] = Action_List[i];
+                                            Action_List[i] = tempAction;
+                                            break;
 
+                                        }
                                     }
+
+                                    stateNumber++;
                                 }
-
                                 stateNumber++;
-                            }
-                           
-                            break;
-                        case Action.THINK:
-                            if (Action_List[stateNumber + 1] != Action.THINK)
-                            {
-                                for (int i = stateNumber + 1; i < Action_List.Count; i++)
-                                {
-                                    if (Action_List[i] == Action.THINK)
-                                    {
-                                        Action tempAction = Action_List[stateNumber + 1];
-                                        Action_List[stateNumber + 1] = Action_List[i];
-                                        Action_List[i] = tempAction;
-                                        break;
+                                break;
 
-                                    }
-                                }
 
-                                stateNumber++;
-                            }
-                            stateNumber++;
-                            break;
-
+                        }
 
                     }
-                    
+
                 }
-         
             }
+
+
+            // if (watchChance < 50)
+
+
+
         }
-       // if (watchChance < 50)
-       
-
-
     }
 
 

@@ -10,19 +10,13 @@ public class DummyController : MonoBehaviour {
     public  StateMachine _thisStateMachine;
     private void Start()
     {
-
         _thisStateMachine = new StateMachine(GetComponent<Animator>());
-
-     
+ 
         Watch watchScript = new Watch();
         Think thinkScript = new Think();
 
         _thisStateMachine.AddState(watchScript);
         _thisStateMachine.AddState(thinkScript);
-
-
-        //_thisStateMachine.SetActiveState("IdleState");
-
 
     }
 
@@ -35,22 +29,12 @@ public class DummyController : MonoBehaviour {
 
     public void AttackRtnEnd()
     {
-        
         _thisStateMachine._anim.SetBool("attackStart", false);
-
-        //_thisStateMachine.SetActiveState("IdleState");
-
-        //_thisStateMachine.currentStateNumber++;
     }
 
     public void DodgeRtnEnd()
     {
-    
         _thisStateMachine._anim.SetBool("dodgeStart", false);
-
-       // _thisStateMachine.SetActiveState("IdleState");
-
-//_thisStateMachine.currentStateNumber++;
     }
 
     public void IdleEnd()
@@ -63,29 +47,22 @@ public class DummyController : MonoBehaviour {
             {
                 case CanvasManager.Action.ATTACK:
                     _thisStateMachine.currentStateNumber++;
-                    //_thisStateMachine.SetActiveState("AttackState");
                     _thisStateMachine._anim.SetBool("attackStart", true);
                     Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
-                    //EntryPoint.playerStateMachine.GetAnimator().SetBool("attackStart", false);
-                    //EntryPoint.playerStateMachine.SetActiveState("AttackState");
                     break;
                 case CanvasManager.Action.DODGE:
                     _thisStateMachine.currentStateNumber++;
                     _thisStateMachine._anim.SetBool("dodgeStart", true);
                     Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
-                    // EntryPoint.playerStateMachine.SetActiveState("DodgeState");
                     break;
                 case CanvasManager.Action.THINK:
                     _thisStateMachine.currentStateNumber++;
                     Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
-                    //  EntryPoint.playerStateMachine.SetActiveState("ThinkState");
-
                     break;
                 case CanvasManager.Action.WATCH:
                     _thisStateMachine.currentStateNumber++;
                     Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
                     Watch();
-                    //  EntryPoint.playerStateMachine.SetActiveState("WatchState");
                     break;
 
             }
@@ -96,34 +73,19 @@ public class DummyController : MonoBehaviour {
             switch (CanvasManager.Instance.Test_Enemy[_thisStateMachine.currentStateNumber])
             {
                 case CanvasManager.Action.ATTACK:
-                  
-                    //_thisStateMachine.SetActiveState("AttackState");
                     _thisStateMachine._anim.SetBool("attackStart", true);
                     _thisStateMachine.currentStateNumber++;
-                    Debug.Log(gameObject.transform.parent.name+" "+ _thisStateMachine.currentStateNumber);
-                    //EntryPoint.playerStateMachine.GetAnimator().SetBool("attackStart", false);
-                    //EntryPoint.playerStateMachine.SetActiveState("AttackState");
                     break;
                 case CanvasManager.Action.DODGE:
-            
                     _thisStateMachine._anim.SetBool("dodgeStart", true);
                     _thisStateMachine.currentStateNumber++;
-                    Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
-                    // EntryPoint.playerStateMachine.SetActiveState("DodgeState");
                     break;
                 case CanvasManager.Action.THINK:
                     _thisStateMachine.currentStateNumber++;
-                    Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
-                   
-                    //  EntryPoint.playerStateMachine.SetActiveState("ThinkState");
-
                     break;
                 case CanvasManager.Action.WATCH:
                     _thisStateMachine.currentStateNumber++;
-                    Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
-                   
                     Watch();
-                    //  EntryPoint.playerStateMachine.SetActiveState("WatchState");
                     break;
 
             }
@@ -161,10 +123,6 @@ public class DummyController : MonoBehaviour {
             }
         }
        
-       // Debug.Log("this is:" + enemyAction+" "+ _thisStateMachine.currentStateNumber);
-
-
-
 
     }
 

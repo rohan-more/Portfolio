@@ -6027,6 +6027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957899075}
   - component: {fileID: 1957899076}
+  - component: {fileID: 1957899077}
   m_Layer: 0
   m_Name: EditorManager
   m_TagString: Untagged
@@ -6065,6 +6066,18 @@ MonoBehaviour:
   _redoButton: {fileID: 0}
   _plusButton: {fileID: 0}
   _minusButton: {fileID: 0}
+  stateNumber: 0
+--- !u!114 &1957899077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1957899074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ca7907b8beb6946b6033969182e712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1959287034
 GameObject:
   m_ObjectHideFlags: 0
