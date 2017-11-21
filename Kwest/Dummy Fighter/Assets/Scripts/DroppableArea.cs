@@ -10,10 +10,7 @@ public class DroppableArea : MonoBehaviour, IDropHandler {
 		
 	}
  
-    public void OnPointerClick(PointerEventData eventData)
-    {
 
-    }
 
     public void OnDrop(PointerEventData eventData)
     {

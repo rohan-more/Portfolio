@@ -13,13 +13,16 @@ public class CanvasManager : MonoBehaviour {
     public Stack<int> Redo_List;
     public Stack<int> Undo_List;
     public List<Action> Action_List;
+
+    public List<Action> Test_Enemy;
+
     GameObject _content;
     Button _fightButton;
     public Button _undoButton;
     public Button _redoButton;
     public Button _plusButton;
     public Button _minusButton;
-
+    public int stateNumber = 0;
     Button _exitButton;
     private static CanvasManager _instance;
     public static CanvasManager Instance
@@ -91,6 +94,9 @@ public class CanvasManager : MonoBehaviour {
    void FightButtonClicked()
     {
         ListOfActions();
+        FillEnemyList();
+        ChangePlayerList();
+
         DontDestroyOnLoad(transform.gameObject);
         SceneManager.LoadScene("Fight");
     }
@@ -124,6 +130,14 @@ public class CanvasManager : MonoBehaviour {
 
     }
 
+    void FillEnemyList()
+    {
+        Test_Enemy.Add(Action.ATTACK);
+        Test_Enemy.Add(Action.ATTACK);
+        Test_Enemy.Add(Action.DODGE);
+        Test_Enemy.Add(Action.ATTACK);
+        Test_Enemy.Add(Action.DODGE);
+    }
 
 
 
@@ -198,7 +212,69 @@ public class CanvasManager : MonoBehaviour {
         }
       
     }
- 
+
+    int Chance()
+    {
+        int chance = Random.Range(1, 100);
+        return chance;
+    }
+
+    void ChangePlayerList()
+    {
+        int watchChance = Chance();
+        stateNumber = 0;
+        //for(int z=0;z<5;z++)
+        if (watchChance < 50)
+        {
+            {
+               // Debug.Log(Test_Enemy[stateNumber]);
+               if(stateNumber < Test_Enemy.Count - 1)
+                {
+                    Action enemyAction = Test_Enemy[stateNumber + 1];
+
+                    switch (enemyAction)
+                    {
+                        case Action.ATTACK:
+                            if (Action_List[stateNumber + 1] != Action.DODGE)
+                            {
+                                for (int i = stateNumber + 1; i < Action_List.Count; i++)
+                                {
+                                    if (Action_List[i] == Action.DODGE)
+                                    {
+                                        Action tempAction = Action_List[stateNumber + 1];
+                                        Action_List[stateNumber + 1] = Action_List[i];
+                                        Action_List[i] = tempAction;
+                                        break;
+
+                                    }
+                                }
+
+                                stateNumber++;
+                            }
+                            break;
+
+                        case Action.DODGE:
+                            stateNumber++;
+                            break;
+                        case Action.WATCH:
+                            stateNumber++;
+                            break;
+                        case Action.THINK:
+                            stateNumber++;
+                            break;
+
+
+                    }
+                    
+                }
+         
+            }
+        }
+       // if (watchChance < 50)
+       
+
+
+    }
 
 
 

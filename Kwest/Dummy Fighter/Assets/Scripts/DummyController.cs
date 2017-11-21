@@ -21,7 +21,7 @@ public class DummyController : MonoBehaviour {
         _thisStateMachine.AddState(thinkScript);
 
 
-        _thisStateMachine.SetActiveState("IdleState");
+        //_thisStateMachine.SetActiveState("IdleState");
 
 
     }
@@ -35,58 +35,140 @@ public class DummyController : MonoBehaviour {
 
     public void AttackRtnEnd()
     {
-        Debug.Log("AttackFwdEnd");
+        
         _thisStateMachine._anim.SetBool("attackStart", false);
 
         //_thisStateMachine.SetActiveState("IdleState");
 
-        _thisStateMachine.currentStateNumber++;
+        //_thisStateMachine.currentStateNumber++;
     }
 
     public void DodgeRtnEnd()
     {
-        Debug.Log("DOdgeEnd");
+    
         _thisStateMachine._anim.SetBool("dodgeStart", false);
 
        // _thisStateMachine.SetActiveState("IdleState");
 
-        _thisStateMachine.currentStateNumber++;
+//_thisStateMachine.currentStateNumber++;
     }
 
     public void IdleEnd()
     {
-        Debug.Log("IdleEnd");
+     
        
-
-        switch (CanvasManager.Instance.Action_List[_thisStateMachine.currentStateNumber])
+        if(gameObject.transform.parent.name == "DummyPlayer" && _thisStateMachine.currentStateNumber<CanvasManager.Instance.Action_List.Count )
         {
-            case CanvasManager.Action.ATTACK:
-                Debug.Log("p Attack");
-                //_thisStateMachine.SetActiveState("AttackState");
-                _thisStateMachine._anim.SetBool("attackStart", true);
-                //EntryPoint.playerStateMachine.GetAnimator().SetBool("attackStart", false);
-                //EntryPoint.playerStateMachine.SetActiveState("AttackState");
-                break;
-            case CanvasManager.Action.DODGE:
-                Debug.Log("p Dodge");
-                _thisStateMachine._anim.SetBool("dodgeStart", true);
-                // EntryPoint.playerStateMachine.SetActiveState("DodgeState");
-                break;
-            case CanvasManager.Action.THINK:
-                Debug.Log("p Think");
-                //  EntryPoint.playerStateMachine.SetActiveState("ThinkState");
-                
-                break;
-            case CanvasManager.Action.WATCH:
-                Debug.Log("p Watch");
-                _thisStateMachine.SetActiveState("WatchState");
-                //  EntryPoint.playerStateMachine.SetActiveState("WatchState");
-                break;
+            switch (CanvasManager.Instance.Action_List[_thisStateMachine.currentStateNumber])
+            {
+                case CanvasManager.Action.ATTACK:
+                    _thisStateMachine.currentStateNumber++;
+                    //_thisStateMachine.SetActiveState("AttackState");
+                    _thisStateMachine._anim.SetBool("attackStart", true);
+                    Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
+                    //EntryPoint.playerStateMachine.GetAnimator().SetBool("attackStart", false);
+                    //EntryPoint.playerStateMachine.SetActiveState("AttackState");
+                    break;
+                case CanvasManager.Action.DODGE:
+                    _thisStateMachine.currentStateNumber++;
+                    _thisStateMachine._anim.SetBool("dodgeStart", true);
+                    Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
+                    // EntryPoint.playerStateMachine.SetActiveState("DodgeState");
+                    break;
+                case CanvasManager.Action.THINK:
+                    _thisStateMachine.currentStateNumber++;
+                    Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
+                    //  EntryPoint.playerStateMachine.SetActiveState("ThinkState");
 
+                    break;
+                case CanvasManager.Action.WATCH:
+                    _thisStateMachine.currentStateNumber++;
+                    Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
+                    Watch();
+                    //  EntryPoint.playerStateMachine.SetActiveState("WatchState");
+                    break;
+
+            }
         }
+
+        else if(_thisStateMachine.currentStateNumber < CanvasManager.Instance.Test_Enemy.Count && (gameObject.transform.parent.name == "Enemy"))
+        {
+            switch (CanvasManager.Instance.Test_Enemy[_thisStateMachine.currentStateNumber])
+            {
+                case CanvasManager.Action.ATTACK:
+                  
+                    //_thisStateMachine.SetActiveState("AttackState");
+                    _thisStateMachine._anim.SetBool("attackStart", true);
+                    _thisStateMachine.currentStateNumber++;
+                    Debug.Log(gameObject.transform.parent.name+" "+ _thisStateMachine.currentStateNumber);
+                    //EntryPoint.playerStateMachine.GetAnimator().SetBool("attackStart", false);
+                    //EntryPoint.playerStateMachine.SetActiveState("AttackState");
+                    break;
+                case CanvasManager.Action.DODGE:
+            
+                    _thisStateMachine._anim.SetBool("dodgeStart", true);
+                    _thisStateMachine.currentStateNumber++;
+                    Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
+                    // EntryPoint.playerStateMachine.SetActiveState("DodgeState");
+                    break;
+                case CanvasManager.Action.THINK:
+                    _thisStateMachine.currentStateNumber++;
+                    Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
+                   
+                    //  EntryPoint.playerStateMachine.SetActiveState("ThinkState");
+
+                    break;
+                case CanvasManager.Action.WATCH:
+                    _thisStateMachine.currentStateNumber++;
+                    Debug.Log(gameObject.transform.parent.name + " " + _thisStateMachine.currentStateNumber);
+                   
+                    Watch();
+                    //  EntryPoint.playerStateMachine.SetActiveState("WatchState");
+                    break;
+
+            }
+        }
+        
 
 
     }
+
+    int Chance()
+    {
+        int chance = Random.Range(1, 100);
+        return chance;
+    }
+
+
+    void Watch()
+    {
+        
+        int watchChance = Chance();
+
+        if(watchChance <50)
+        {
+            CanvasManager.Action enemyAction = CanvasManager.Instance.Test_Enemy[_thisStateMachine.currentStateNumber + 1];
+            switch (enemyAction)
+            {
+                case CanvasManager.Action.ATTACK:
+                    if (CanvasManager.Instance.Action_List[_thisStateMachine.currentStateNumber + 1] != CanvasManager.Action.DODGE)
+                    {
+                        CanvasManager.Instance.Action_List[_thisStateMachine.currentStateNumber + 1] = CanvasManager.Action.DODGE;
+                    
+                    }
+                    break;
+
+            }
+        }
+       
+       // Debug.Log("this is:" + enemyAction+" "+ _thisStateMachine.currentStateNumber);
+
+
+
+
+    }
+
+
 
  
 }
