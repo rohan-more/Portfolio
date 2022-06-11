@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace AISandbox {
-    public class OrientedActor : MonoBehaviour, IActor {
-        private const float MAX_SPEED           = 17.0f;
-        private const float STEERING_ACCEL      = 40.0f;
+namespace AISandbox
+{
+    public class OrientedActor : MonoBehaviour, IActor
+    {
+        private const float MAX_SPEED = 17.0f;
+        private const float STEERING_ACCEL = 40.0f;
         private const float STEERING_LINE_SCALE = 4.0f;
 
         public Vector2 initialVelocity = Vector2.zero;
@@ -12,11 +14,14 @@ namespace AISandbox {
 
         [SerializeField]
         private bool _DrawVectors = true;
-        public bool DrawVectors {
-            get {
+        public bool DrawVectors
+        {
+            get
+            {
                 return _DrawVectors;
             }
-            set {
+            set
+            {
                 _DrawVectors = value;
                 _steering_line.gameObject.SetActive(_DrawVectors);
             }
@@ -29,41 +34,52 @@ namespace AISandbox {
 
         private Vector2 _steering = Vector2.zero;
         private Vector2 _acceleration = Vector2.zero;
-        public Vector2 _velocity = Vector2.zero;
+        private Vector2 _velocity = Vector2.zero;
 
-        private void Start() {
+        private void Start()
+        {
             _renderer = GetComponent<Renderer>();
-            _velocity = initialVelocity;
+            _velocity = Random.onUnitSphere * Random.Range(0.0f, MaxSpeed);
             DrawVectors = _DrawVectors;
         }
 
-        public void SetInput( float x_axis, float y_axis ) {
-            _steering = Vector2.ClampMagnitude( new Vector2(x_axis, y_axis), 1.0f );
+        public void SetInput(float x_axis, float y_axis)
+        {
+            _steering = Vector2.ClampMagnitude(new Vector2(x_axis, y_axis), 1.0f);
             _acceleration = _steering * STEERING_ACCEL;
         }
 
-        public float MaxSpeed {
+        public float MaxSpeed
+        {
             get { return MAX_SPEED; }
         }
 
-        public Vector2 Velocity {
+        public Vector2 Velocity
+        {
             get { return _velocity; }
         }
 
-        private Vector3 ScreenWrap() {
+        private Vector3 ScreenWrap()
+        {
             Vector3 position = transform.position;
-            if( wrapScreen ) {
-                if( _renderer.isVisible ) {
+            if (wrapScreen)
+            {
+                if (_renderer.isVisible)
+                {
                     _screenWrapX = false;
                     _screenWrapY = false;
                     return position;
-                } else {
+                }
+                else
+                {
                     Vector3 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
-                    if( !_screenWrapX && (viewportPosition.x > 1 || viewportPosition.x < 0) ) {
+                    if (!_screenWrapX && (viewportPosition.x > 1 || viewportPosition.x < 0))
+                    {
                         position.x = -position.x;
                         _screenWrapX = true;
                     }
-                    if( !_screenWrapY && (viewportPosition.y > 1 || viewportPosition.y < 0 ) ) {
+                    if (!_screenWrapY && (viewportPosition.y > 1 || viewportPosition.y < 0))
+                    {
                         position.y = -position.y;
                         _screenWrapY = true;
                     }
@@ -72,7 +88,8 @@ namespace AISandbox {
             return position;
         }
 
-        private void Update() {
+        private void Update()
+        {
             Vector3 position = ScreenWrap();
             _velocity += _acceleration * Time.deltaTime;
             _velocity = Vector2.ClampMagnitude(_velocity, MAX_SPEED);
@@ -81,7 +98,7 @@ namespace AISandbox {
             transform.rotation = Quaternion.LookRotation(Vector3.back, Vector3.Normalize(_velocity));
 
             _steering_line.transform.rotation = Quaternion.identity;
-            _steering_line.SetPosition( 1, _steering * STEERING_LINE_SCALE );
+            _steering_line.SetPosition(1, _steering * STEERING_LINE_SCALE);
 
             // The steering is reset every frame so SetInput() must be called every frame for continuous steering.
             _steering = Vector2.zero;

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 28825516}
   - component: {fileID: 28825515}
   m_Layer: 5
-  m_Name: Layout Element
+  m_Name: AlignmentSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -876,7 +876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -115.5, y: -45.6}
+  m_AnchoredPosition: {x: -152.9, y: -45.6}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &360696982
@@ -1071,7 +1071,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.38235295, g: 0.38235295, b: 0.30644464, a: 0.019607844}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1339,7 +1339,7 @@ GameObject:
   - component: {fileID: 572535592}
   - component: {fileID: 572535591}
   m_Layer: 5
-  m_Name: Layout Element
+  m_Name: SeperationSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1586,7 +1586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -142.8, y: -0.6}
+  m_AnchoredPosition: {x: -102, y: -0.6}
   m_SizeDelta: {x: 98.7, y: 19.4}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &692474958
@@ -1602,7 +1602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1886,7 +1886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2096,14 +2096,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40dd401230c93045af204b01c552519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neighbourDistance: 10
+  seperationWeight: 1
+  alignmentWeight: 1
+  cohesionWeight: 0.5
   _flockingActorPrefab: {fileID: 6905741828380936728, guid: 712aee28afce50a4781fa6796d40102d,
     type: 3}
-  _neighborDistanceSlider: {fileID: 536371698}
-  _separationSlider: {fileID: 1274726392}
-  _alignmentSlider: {fileID: 715252337}
-  _cohesionSlider: {fileID: 181699349}
-  toggleDraw: {fileID: 360696982}
-  _flock: []
+  noOfActors: 30
+  flockActorList: []
 --- !u!4 &879608682
 Transform:
   m_ObjectHideFlags: 0
@@ -2179,7 +2179,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 3
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -2381,7 +2381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 8.8, y: -7.9}
+  m_AnchoredPosition: {x: 8.8, y: -10.7}
   m_SizeDelta: {x: 17.6, y: 15.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1237254729
@@ -2600,8 +2600,9 @@ GameObject:
   - component: {fileID: 1383539616}
   - component: {fileID: 1383539618}
   - component: {fileID: 1383539617}
+  - component: {fileID: 1383539619}
   m_Layer: 5
-  m_Name: Control Panel
+  m_Name: UI Control Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2648,7 +2649,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 2
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -2664,6 +2665,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383539615}
   m_CullTransparentMesh: 1
+--- !u!114 &1383539619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383539615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1876fba0ec9661b42866745ae9dcd8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flockingManager: {fileID: 879608681}
+  _neighborDistanceSlider: {fileID: 536371698}
+  _separationSlider: {fileID: 1274726392}
+  _alignmentSlider: {fileID: 715252337}
+  _cohesionSlider: {fileID: 181699349}
+  toggleDraw: {fileID: 360696982}
 --- !u!1 &1463293835
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,7 +2732,7 @@ GameObject:
   - component: {fileID: 1483635921}
   - component: {fileID: 1483635920}
   m_Layer: 5
-  m_Name: Layout Element
+  m_Name: CohesionSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2856,7 +2875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2897,7 +2916,7 @@ GameObject:
   - component: {fileID: 1841594179}
   - component: {fileID: 1841594178}
   m_Layer: 5
-  m_Name: Layout Element
+  m_Name: NeighborDistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3164,7 +3183,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 3
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
