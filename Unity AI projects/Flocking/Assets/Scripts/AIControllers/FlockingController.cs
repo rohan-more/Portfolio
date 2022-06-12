@@ -27,32 +27,31 @@ namespace AISandbox
         {
             GetVelocity();
             // GetDrawVectors();
-            neighbourCount = 0;
             GetMaxSpeed();
             // SetDrawVectors();
+            MoveActor();
         }
 
         public void MoveActor()
         {
-            alignmentVector = computeAlignment(this);
-            cohesionVector = computeCohesion(this);
-            seperationVector = computeSeperation(this);
+            computeAlignment();
+            computeCohesion();
+            computeSeperation();
             steering.x = alignmentVector.x * flockingManager.alignmentWeight + cohesionVector.x * flockingManager.cohesionWeight + seperationVector.x * flockingManager.seperationWeight;
             steering.y = alignmentVector.y * flockingManager.alignmentWeight + cohesionVector.y * flockingManager.cohesionWeight + seperationVector.y * flockingManager.seperationWeight;
         }
 
-        public Vector2 computeAlignment(FlockingController fActor)
+        public void computeAlignment()
         {
             foreach (FlockingController actor in flockingManager.flockActorList)
             {
-                if (fActor != actor)
+                if (this != actor)
                 {
-                    if (Vector3.Distance(actor.transform.position, fActor.transform.position) < flockingManager.neighbourDistance)
+                    if (Vector3.Distance(actor.transform.position, transform.position) < flockingManager.neighbourDistance)
                     {
                         computeAlignmentVector.x += actor.o_Velocity.x;
                         computeAlignmentVector.y += actor.o_Velocity.x;
                         neighbourCount++;
-
                     }
                 }
             }
@@ -60,34 +59,30 @@ namespace AISandbox
 
             if (neighbourCount == 0)
             {
-                return Vector2.zero;
+                alignmentVector = computeAlignmentVector = Vector2.zero;
             }
             else
             {
                 computeAlignmentVector.x /= neighbourCount;
                 computeAlignmentVector.y /= neighbourCount;
-
                 computeAlignmentVector.Normalize();
                 computeAlignmentVector.x *= maxSpeed;
                 computeAlignmentVector.y *= maxSpeed;
-                computeAlignmentVector = computeAlignmentVector - fActor.o_Velocity;
+                computeAlignmentVector -= o_Velocity;
                 neighbourCount = 0;
-                return computeAlignmentVector;
-
+                alignmentVector = computeAlignmentVector;
             }
-
-
         }
 
-        public Vector2 computeCohesion(FlockingController fActor)
+        public void computeCohesion()
         {
             computeCohesionVector = Vector2.zero;
 
             foreach (FlockingController actor in flockingManager.flockActorList)
             {
-                if (actor != fActor)
+                if (actor != this)
                 {
-                    if (Vector2.Distance(actor.transform.position, fActor.transform.position) < flockingManager.neighbourDistance)
+                    if (Vector2.Distance(actor.transform.position, transform.position) < flockingManager.neighbourDistance)
                     {
                         computeCohesionVector.x += actor.transform.position.x;
                         computeCohesionVector.y += actor.transform.position.y;
@@ -98,34 +93,34 @@ namespace AISandbox
             }
             if (neighbourCount == 0)
             {
-                return Vector2.zero;
+                cohesionVector = computeCohesionVector = Vector2.zero;
             }
             else
             {
                 computeCohesionVector.x /= neighbourCount;
                 computeCohesionVector.y /= neighbourCount;
-                computeCohesionVector = new Vector2(computeCohesionVector.x - fActor.transform.position.x, computeCohesionVector.y - fActor.transform.position.y);
+                computeCohesionVector = new Vector2(computeCohesionVector.x - transform.position.x, computeCohesionVector.y - transform.position.y);
                 neighbourCount = 0;
-                return computeCohesionVector;
+                cohesionVector = computeCohesionVector;
             }
 
         }
 
-        public Vector2 computeSeperation(FlockingController fActor)
+        public void computeSeperation()
         {
             Vector2 steer = Vector2.zero;
             computeSeperationVector = Vector2.zero;
 
             foreach (FlockingController actor in flockingManager.flockActorList)
             {
-                if (actor != fActor)
+                if (actor != this)
                 {
-                    float distance = Vector2.Distance(actor.transform.position, fActor.transform.position);
+                    float distance = Vector2.Distance(actor.transform.position, transform.position);
 
                     if (distance < flockingManager.neighbourDistance)
                     {
-                        steer.x = fActor.transform.position.x - actor.transform.position.x;
-                        steer.y = fActor.transform.position.y - actor.transform.position.y;
+                        steer.x = transform.position.x - actor.transform.position.x;
+                        steer.y = transform.position.y - actor.transform.position.y;
 
                         steer.Normalize();
                         steer *= 1.0f - (distance / flockingManager.neighbourDistance);
@@ -134,8 +129,7 @@ namespace AISandbox
                     }
                 }
             }
-
-            return computeSeperationVector;
+            seperationVector = computeSeperationVector;
         }
 
         public void GetDrawVectors()

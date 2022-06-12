@@ -14,6 +14,8 @@ namespace AISandbox
         public FlockingController _flockingActorPrefab;
         [SerializeField]
         private float noOfActors;
+        [SerializeField]
+        private int debugActorIndex;
 
         public List<FlockingController> flockActorList = new List<FlockingController>();
 
@@ -33,19 +35,7 @@ namespace AISandbox
                 flockActorList.Add(CreateFlockingActor());
             }
 
-            flockActorList[10].debugFlag = true;
+            flockActorList[debugActorIndex].debugFlag = true;
         }
-
-
-        public void FixedUpdate()
-        {
-            for (int i = 0; i < noOfActors; i++)
-            {
-                flockActorList[i].MoveActor();
-            }
-        }
-
-
-
     }
 }

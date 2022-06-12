@@ -95,7 +95,7 @@ namespace AISandbox
             _velocity = Vector2.ClampMagnitude(_velocity, MAX_SPEED);
             position += (Vector3)(_velocity * Time.deltaTime);
             transform.position = position;
-            transform.rotation = Quaternion.LookRotation(Vector3.back, Vector3.Normalize(_velocity));
+            transform.rotation = Quaternion.LookRotation(-Vector3.back, Vector3.Normalize(_velocity));
 
             _steering_line.transform.rotation = Quaternion.identity;
             _steering_line.SetPosition(1, _steering * STEERING_LINE_SCALE);
