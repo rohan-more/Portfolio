@@ -5,13 +5,15 @@ namespace AISandbox
 {
     public class SimpleActor : MonoBehaviour, IActor
     {
+        #region CONSTANTS
         private const float MAX_SPEED = 20.0f;
         private const float STEERING_ACCEL = 10 * MAX_SPEED;
         private const float VELOCITY_LINE_SCALE = 0.1f;
         private const float STEERING_LINE_SCALE = VELOCITY_LINE_SCALE * MAX_SPEED;
-
-        [SerializeField]
-        private bool _DrawVectors = true;
+        #endregion
+        [SerializeField]  private bool _DrawVectors = true;
+        [SerializeField] private LineRenderer _steering_line;
+        [SerializeField] private LineRenderer _velocity_line;
         public bool DrawVectors
         {
             get
@@ -25,9 +27,7 @@ namespace AISandbox
                 _velocity_line.gameObject.SetActive(_DrawVectors);
             }
         }
-        public LineRenderer _steering_line;
-        public LineRenderer _velocity_line;
-
+        public float radius;
         private Vector2 _steering = Vector2.zero;
         private Vector2 _acceleration = Vector2.zero;
         private Vector2 _velocity = Vector2.zero;
@@ -35,6 +35,7 @@ namespace AISandbox
         private void Start()
         {
             DrawVectors = _DrawVectors;
+            radius = GetComponent<SpriteRenderer>().bounds.extents.x;
         }
 
         public void SetInput(float x_axis, float y_axis)
