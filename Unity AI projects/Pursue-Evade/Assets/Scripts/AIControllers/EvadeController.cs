@@ -7,23 +7,17 @@ namespace AISandbox
     public class EvadeController : MonoBehaviour
     {
         private IActor _actor;
-        private PredictionController predictionControllerScript;
-
+        [SerializeField] PredictionController predictionController;
+        private float x_axis, y_axis;
         private void Awake()
         {
             _actor = GetComponent<IActor>();
         }
-        private void Start()
-        {
-            predictionControllerScript = GameObject.Find("Prediction").GetComponent<PredictionController>();
-        }
 
         private void FixedUpdate()
         {
-            float x_axis = transform.position.x - predictionControllerScript.transform.position.x;    // FIXME
-            float y_axis = transform.position.y - predictionControllerScript.transform.position.y;    // FIXME
-
-            // Pass all parameters to the character control script.
+             x_axis = transform.position.x - predictionController.transform.position.x;
+             y_axis = transform.position.y - predictionController.transform.position.y; 
             _actor.SetInput(x_axis, y_axis);
         }
     }

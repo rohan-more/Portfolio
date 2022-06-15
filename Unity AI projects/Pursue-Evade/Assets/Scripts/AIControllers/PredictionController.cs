@@ -5,32 +5,30 @@ namespace AISandbox
 {
     public class PredictionController : MonoBehaviour
     {
-        private PursuitAndEvasion pursuitAndEvasionScript;
-        private SpriteRenderer spriteRendererScript;
-        private SimpleActor simpleActorScript;
+        [SerializeField] private PursuitAndEvasion pursuitAndEvasionScript;
+        [SerializeField]
+        private SimpleActor _target_actor;
+        [SerializeField]
+        private Transform _pursuing_actor;
+        private Vector3 targetActorVelocity;
+        private float futureTime;
+        private const float DISTANCE = 2.5f;
         private void Start()
         {
-            pursuitAndEvasionScript = GameObject.Find("Pursuit and Evasion").GetComponent<PursuitAndEvasion>();
-            spriteRendererScript = GetComponent<SpriteRenderer>();
-            simpleActorScript = pursuitAndEvasionScript._target_actor.GetComponent<SimpleActor>();
+            InvokeRepeating(nameof(ResetLevel), 2.0f, 1.0f);
         }
         private void Update()
         {
-            if (spriteRendererScript.enabled && (Mathf.Abs(Vector3.Distance(pursuitAndEvasionScript._pursuing_actor.transform.position, transform.position)) < 2.5f))
-            {
-                spriteRendererScript.enabled = false;
-                Invoke("ResetLevel", 2.0f);
-            }
-
-            Vector3 targetActorVelocity = new Vector3(pursuitAndEvasionScript._target_actor.Velocity.x, pursuitAndEvasionScript._target_actor.Velocity.y);
-
-            float futureTime = Vector3.Distance(pursuitAndEvasionScript._target_actor.transform.position, pursuitAndEvasionScript._pursuing_actor.transform.position) / simpleActorScript.MAX_SPEED;
-
-            transform.position = pursuitAndEvasionScript._target_actor.transform.position + targetActorVelocity * futureTime;            
+            targetActorVelocity = new Vector3(_target_actor.Velocity.x, _target_actor.Velocity.y);
+            futureTime = Vector3.Distance(_target_actor.transform.position, _pursuing_actor.transform.position) / _target_actor.MAX_SPEED;
+            transform.position = _target_actor.transform.position + targetActorVelocity * futureTime;
         }
         private void ResetLevel()
         {
-            pursuitAndEvasionScript.ResetLevel();
+            if (Mathf.Abs(Vector3.Distance(_pursuing_actor.transform.position, transform.position)) < DISTANCE)
+            {
+                pursuitAndEvasionScript.ResetActors();
+            }
         }
     }
 }

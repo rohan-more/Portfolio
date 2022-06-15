@@ -7,21 +7,17 @@ namespace AISandbox
     public class PursuitController : MonoBehaviour
     {
         private IActor _actor;
-        private PredictionController predictionControllerScript;
-
+        [SerializeField] PredictionController predictionController;
+        private float x_axis, y_axis;
         private void Awake()
         {
             _actor = GetComponent<IActor>();
         }
-        private void Start()
-        {
-            predictionControllerScript = GameObject.Find("Prediction").GetComponent<PredictionController>();
-        }
 
         private void FixedUpdate()
         {
-            float x_axis = predictionControllerScript.transform.position.x - transform.position.x;    // FIXME
-            float y_axis = predictionControllerScript.transform.position.y - transform.position.y;    // FIXME
+             x_axis = predictionController.transform.position.x - transform.position.x; 
+             y_axis = predictionController.transform.position.y - transform.position.y; 
 
             // Pass all parameters to the character control script.
             _actor.SetInput(x_axis, y_axis);         

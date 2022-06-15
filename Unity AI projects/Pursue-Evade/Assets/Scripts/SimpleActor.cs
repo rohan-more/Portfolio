@@ -93,6 +93,13 @@ namespace AISandbox
             transform.position = position;
         }
 
+        public void ResetVectors()
+        {
+            _steering = Vector2.zero;
+            _acceleration = Vector2.zero;
+            _velocity = Vector2.zero;
+        }
+
         private void Update()
         {
             _steering_line.SetPosition(1, _steering * STEERING_LINE_SCALE);
