@@ -2096,10 +2096,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40dd401230c93045af204b01c552519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neighbourDistance: 10
-  seperationWeight: 1
-  alignmentWeight: 1
-  cohesionWeight: 0.5
   _flockingActorPrefab: {fileID: 6905741828380936728, guid: 712aee28afce50a4781fa6796d40102d,
     type: 3}
   noOfActors: 30
