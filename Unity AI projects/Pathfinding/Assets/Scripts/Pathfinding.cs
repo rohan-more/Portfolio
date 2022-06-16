@@ -8,40 +8,36 @@ namespace AISandbox {
     public class Pathfinding : MonoBehaviour
     {
         public Grid grid;
-       // GridNode grid_node;
-        int columnSize = 15;
-        int rowSize = 15;
+        [SerializeField] private int columnSize;
+        [SerializeField] private int rowSize;
         int minfValue = 0;
-        /// <typeparam name="TPriority">Type of priorities</typeparam>
-        /// <typeparam name="TValue">Type of values</typeparam>
         KeyValuePair<int, GridNode> startNode, endNode, nullNode;
         KeyValuePair<int, GridNode> nullKPNode;
         public List<Vector3> BackTrace;
         public PriorityQueue<int, GridNode> OpenList;
         public PriorityQueue<int, GridNode> CLosedList;
-        public int MANHATTANDISTANCE = 0;
+        private int manhattanDistance = 0;
         private IList<KeyValuePair<int, GridNode>> GetNeighbours;
         IList<KeyValuePair<int, GridNode>> AllGridNodes;
         KeyValuePair<int, GridNode> currentNode;
         bool isUpdateOn;
         LineRenderer lr;
-        private Color c1 = Color.yellow;
-        private Color c2 = Color.red;
         public int lengthOfLineRenderer;
 
 
         private void Start()
         {
             lr = GetComponent<LineRenderer>();
-            lr.SetColors(c1, c2);
-            lr.SetWidth(0.3f,0.3f);
-            //lr.SetVertexCount(BackTrace.Count);
+            lr.startColor = Color.yellow;
+            lr.endColor = Color.red;
+            lr.startWidth = 0.3f;
+            lr.endWidth = 0.3f;
+
             // Create and center the grid
             grid.Create(columnSize, rowSize);
             Vector2 gridSize = grid.size;
             Vector2 gridPos = new Vector2(gridSize.x * -0.5f, gridSize.y * 0.5f);
             grid.transform.position = gridPos;
-           // grid_node = GameObject.Find("GridNodePrefab").GetComponent<GridNode>();
             OpenList = new PriorityQueue<int, GridNode>();
             CLosedList = new PriorityQueue<int, GridNode>();
             lengthOfLineRenderer = 10;
@@ -55,10 +51,8 @@ namespace AISandbox {
         {
             startNode = FindStartNode();
             endNode = FindEndNode();
-           // if (Input.GetKeyDown(KeyCode.Space))
             if(isUpdateOn)
             {
-                //ManhattanDistance(startNode,endNode);
                 if (startNode.Value != null && endNode.Value != null)
                 {
                     if (startNode.Value.isSet == false)
@@ -67,7 +61,7 @@ namespace AISandbox {
                         currentNode = startNode;
                         startNode.Value.isSet = true;
                        
-                        startNode.Value.h_value = ManhattanDistance(startNode, endNode);
+                        startNode.Value.h_value = GetManhattanDistance(startNode, endNode);
                         startNode.Value.g_value = 10;
                         startNode.Value.f_value = startNode.Value.g_value + startNode.Value.h_value;
                         startNode.Value.ParentNode = null;
@@ -76,14 +70,10 @@ namespace AISandbox {
                     }
                     if (OpenList.IsEmpty == false)
                     {
-                        currentNode = OpenList.Dequeue();
-
-                       // if (CLosedList.Contains(currentNode.f_value,cur) == false && OpenList.Contains(node) == false)
-                           
+                        currentNode = OpenList.Dequeue();      
                         if(currentNode.Value != endNode.Value)
                         CalculateF_G_H_values(currentNode);
                         NextNode(currentNode);
-
                     } 
                     else if(OpenList.IsEmpty == true)
                     {
@@ -102,13 +92,11 @@ namespace AISandbox {
             foreach(KeyValuePair<int, GridNode> node in AllGridNodes)
             {
                 if(node.Value.start_node == true)
-                {
-                   
+                {                 
                     return node;
                 }
             }
-            return nullNode;
-            
+            return nullNode;            
         }
 
         private KeyValuePair<int, GridNode> FindEndNode()
@@ -117,13 +105,11 @@ namespace AISandbox {
             foreach (KeyValuePair<int, GridNode> node in AllGridNodes)
             {
                 if (node.Value.end_node == true)
-                {
-                    
+                {                   
                     return node;
                 }
             }
             return nullNode;
-
         }
 
         private void CalculateF_G_H_values(KeyValuePair<int, GridNode> currentNode)
@@ -139,7 +125,7 @@ namespace AISandbox {
                     {
                         node.Value.ParentNode = currentNode.Value;
                         node.Value.g_value = CostSoFar(node.Value) + 10;
-                        node.Value.h_value = ManhattanDistance(node, endNode);
+                        node.Value.h_value = GetManhattanDistance(node, endNode);
                         node.Value.f_value = node.Value.g_value + node.Value.h_value;
                         if (node.Value != endNode.Value)
                         {
@@ -170,9 +156,6 @@ namespace AISandbox {
                     
                 }
             }
-
-            int a = 0;
-
         }
 
          private int CostSoFar(GridNode node)
@@ -194,25 +177,17 @@ namespace AISandbox {
            
             while (node.ParentNode != null)
             {
-               BackTrace.Add(node.transform.position);
-                //BackTrace[i] = new Vector3(node.ParentNode.transform.position.x,node.ParentNode.transform.position.y, node.ParentNode.transform.position.z);
+               BackTrace.Add(node.transform.position);            
                 node = node.ParentNode;
-                //i++;
-
             }
-            //lengthOfLineRenderer = BackTrace.Length;
+
             BackTrace.Add(startNode.Value.transform.position);
-            lr.SetVertexCount(BackTrace.Count);
+            lr.positionCount = BackTrace.Count;
            
             lr.SetPositions(BackTrace.ToArray());
         }
         void NextNode(KeyValuePair<int, GridNode> node)
         {
-            int a = 0;
-           // AddToOpenList = OpenList.Dequeue();
-            
-            
-            Debug.Log(node.Value);
             if (node.Value == endNode.Value)
             {
                 isUpdateOn = false;
@@ -222,14 +197,9 @@ namespace AISandbox {
             }
             else if(node.Value == startNode.Value)
             {
-
-            }
-            else
-            {
-                //node.Value.pathColor = true;
+                // do nothing
             }
             CLosedList.Enqueue(node.Value.f_value, node.Value);
-            int b = 0;
         }
 
         private KeyValuePair<int, GridNode> NewNode(int minfvalue)
@@ -248,13 +218,13 @@ namespace AISandbox {
             return nullKPNode;
         }
 
-        private int ManhattanDistance(KeyValuePair<int, GridNode> firstNode, KeyValuePair<int, GridNode> secondNode)
+        private int GetManhattanDistance(KeyValuePair<int, GridNode> firstNode, KeyValuePair<int, GridNode> secondNode)
         {
-            MANHATTANDISTANCE = 0;
+            manhattanDistance = 0;
             if (firstNode.Value != null && secondNode.Value != null)
             {
-                MANHATTANDISTANCE = (int)(10 * (Mathf.Abs(firstNode.Value.transform.position.x - secondNode.Value.transform.position.x) + Mathf.Abs(firstNode.Value.transform.position.y - secondNode.Value.transform.position.y)));
-                return MANHATTANDISTANCE;
+                manhattanDistance = (int)(Mathf.Abs(firstNode.Value.transform.position.x - secondNode.Value.transform.position.x) + Mathf.Abs(firstNode.Value.transform.position.y - secondNode.Value.transform.position.y));
+                return manhattanDistance;
             }
 
             return 0;

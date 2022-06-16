@@ -95,7 +95,6 @@ namespace AISandbox {
             end_color = new Color(_orig_color.r * 255.0f, _orig_color.g * 0, _orig_color.b * 0);
             isSet = false;
         }
-
         public IList<KeyValuePair<int, GridNode>>GetNeighbors( bool include_diagonal = false ) {
             return grid.GetNodeNeighbors( row, column, include_diagonal );
         }

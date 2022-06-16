@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
-
 using System.Collections.Generic;
 using System;
 
@@ -10,36 +8,19 @@ namespace AISandbox
 {
     public class Grid : MonoBehaviour
     {
-        public GridNode gridNodePrefab;
-
-        private GridNode[,] _nodes;
-        private float _node_width;
-        private float _node_height;
+        [SerializeField] private GridNode gridNodePrefab;
+        public GridNode[,] _nodes;
+        [SerializeField] private const float _node_width = 1.92f;
+        [SerializeField] private const float _node_height = 1.92f;
         public bool _draw_blocked;
         public bool draw_start;
         public bool draw_end;
-        private Pathfinding pathF;
-       
-        public RectTransform container;
-        private GameObject canvas;
-        private GameObject reset;
-        private Button startNodeButton;
-        private Button endNodeButton;
-        private Button blockedNodeButton;
-        private Button resetButton;
-        
 
-        private bool isOpen;
-        public bool is_Open
+        private void Start()
         {
-            get
-            {
-                return isOpen;
-            }
-            set
-            {
-                isOpen = value;
-            }
+            _draw_blocked = false;
+            draw_start = false;
+            draw_end = false;
         }
         private GridNode CreateNode(int row, int col)
         {
@@ -55,8 +36,6 @@ namespace AISandbox
 
         public void Create(int rows, int columns)
         {
-            _node_width = gridNodePrefab.GetComponent<Renderer>().bounds.size.x;
-            _node_height = gridNodePrefab.GetComponent<Renderer>().bounds.size.y;
             Vector2 node_position = new Vector2(_node_width * 0.5f, _node_height * -0.5f);
             _nodes = new GridNode[rows, columns];
             for (int row = 0; row < rows; ++row)
@@ -135,120 +114,6 @@ namespace AISandbox
 
             return allNodes;
         }
-
-        private void Start()
-        {
-            canvas = GameObject.Find("Container");
-            reset = GameObject.Find("Reset");
-            container = canvas.transform.GetComponent<RectTransform>();
-
-            startNodeButton = container.GetChild(0).GetComponent<Button>();
-            endNodeButton = container.GetChild(1).GetComponent<Button>();
-            blockedNodeButton = container.GetChild(2).GetComponent<Button>();
-            resetButton = reset.GetComponent<Button>();
-            startNodeButton.onClick.AddListener(OnClickStart);
-            endNodeButton.onClick.AddListener(OnClickEnd);
-            blockedNodeButton.onClick.AddListener(OnClickBlock);
-            resetButton.onClick.AddListener(OnCLickReset);
-            isOpen = false;
-            _draw_blocked = false;
-            draw_start = false;
-            draw_end = false;
-
-            pathF = GameObject.Find("Pathfinding").GetComponent<Pathfinding>();
-        }
-
-        private void Update()
-        {
-
-            Vector3 scale = container.localScale;
-            scale.y = Mathf.Lerp(scale.y, isOpen ? 1 : 0, Time.deltaTime * 12);
-            container.localScale = scale;
-
-         
-
-            if (Input.GetMouseButton(0))
-            {
-                Vector3 world_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector3 local_pos = transform.InverseTransformPoint(world_pos);
-                // This trick makes a lot of assumptions that the nodes haven't been modified since initialization.
-                int column = Mathf.FloorToInt(local_pos.x / _node_width);
-                int row = Mathf.FloorToInt(-local_pos.y / _node_height);
-                if (row >= 0 && row < _nodes.GetLength(0)
-                 && column >= 0 && column < _nodes.GetLength(1))
-                {
-                    GridNode node = _nodes[row, column];
-                    if (Input.GetMouseButtonDown(0) && _draw_blocked == true)
-                    {
-                        _draw_blocked = !node.blocked;
-                    }
-                 
-                    if (node.blocked != _draw_blocked)
-                    {
-                        node.blocked = _draw_blocked;
-
-                    }
-                   if (Input.GetMouseButtonDown(0) && draw_start == true)
-                    {
-                        draw_start = !node.startnode;
-                        
-                    }
-                    if (node.startnode != draw_start)
-                    {
-                        node.startnode = draw_start;
-
-                    }
-                   if (Input.GetMouseButtonDown(0) && draw_end == true)
-                    {
-                        draw_end = !node.endnode;
-                    }
-                    if (node.endnode != draw_end)
-                    {
-                        node.endnode = draw_end;
-
-                    }
-                }
-            }
-        }
-
-
-
-        public void OnClickStart()
-        {
-            
-            draw_start = true;
-            _draw_blocked = false;
-            draw_end = false;
-            isOpen = false;
-            
-        }
-
-        public void OnClickEnd()
-        {
-            draw_end = true;
-            _draw_blocked = false;
-            draw_start = false;
-            isOpen = false;
-        }
-
-        public void OnClickBlock()
-        {
-            _draw_blocked = true;
-            draw_start = false;
-            draw_end = false;
-            isOpen = false;
-        }
-
-        public void OnCLickReset()
-        {
-            //SceneManager.LoadScene("StateMachines");
-        }
-
-
-
-
-
-
 
 
     }
