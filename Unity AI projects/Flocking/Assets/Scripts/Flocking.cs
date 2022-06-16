@@ -7,17 +7,20 @@ namespace AISandbox
     public class Flocking : MonoBehaviour
     {
         private const float SPAWN_RANGE = 10.0f;
-        public float neighbourDistance = 10.0f;
-        public float seperationWeight = 1.0f;
-        public float alignmentWeight = 1.0f;
-        public float cohesionWeight = 0.5f;
+        private float neighbourDistance = 10.0f;
+        private float seperationWeight = 1.0f;
+        private float alignmentWeight = 1.0f;
+        private float cohesionWeight = 0.5f;
         public FlockingController _flockingActorPrefab;
-        [SerializeField]
-        private float noOfActors;
-        [SerializeField]
-        private int debugActorIndex;
+        [SerializeField] private float noOfActors;
+        [SerializeField] private int debugActorIndex;
 
         public List<FlockingController> flockActorList = new List<FlockingController>();
+
+        public float NeighbourDistance { get => neighbourDistance; set => neighbourDistance = value; }
+        public float SeperationWeight { get => seperationWeight; set => seperationWeight = value; }
+        public float AlignmentWeight { get => alignmentWeight; set => alignmentWeight = value; }
+        public float CohesionWeight { get => cohesionWeight; set => cohesionWeight = value; }
 
         private FlockingController CreateFlockingActor()
         {
@@ -29,7 +32,6 @@ namespace AISandbox
 
         private void Start()
         {
-
             for (int i = 0; i < noOfActors; ++i)
             {
                 flockActorList.Add(CreateFlockingActor());

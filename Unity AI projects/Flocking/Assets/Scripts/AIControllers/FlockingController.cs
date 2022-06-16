@@ -34,23 +34,25 @@ namespace AISandbox
 
         public void MoveActor()
         {
-            computeAlignment();
-            computeCohesion();
-            computeSeperation();
-            steering.x = alignmentVector.x * flockingManager.alignmentWeight + cohesionVector.x * flockingManager.cohesionWeight + seperationVector.x * flockingManager.seperationWeight;
-            steering.y = alignmentVector.y * flockingManager.alignmentWeight + cohesionVector.y * flockingManager.cohesionWeight + seperationVector.y * flockingManager.seperationWeight;
+            ComputeAlignment();
+            ComputeCohesion();
+            ComputeSeperation();
+            steering = alignmentVector * flockingManager.AlignmentWeight + cohesionVector * flockingManager.CohesionWeight + seperationVector * flockingManager.SeperationWeight;
         }
 
-        public void computeAlignment()
+
+        /// <summary>
+        /// Calculate the alignment vector based on neighbor count
+        /// </summary>
+        public void ComputeAlignment()
         {
             foreach (FlockingController actor in flockingManager.flockActorList)
             {
                 if (this != actor)
                 {
-                    if (Vector3.Distance(actor.transform.position, transform.position) < flockingManager.neighbourDistance)
+                    if (Vector3.Distance(actor.transform.position, transform.position) < flockingManager.NeighbourDistance)
                     {
-                        computeAlignmentVector.x += actor.o_Velocity.x;
-                        computeAlignmentVector.y += actor.o_Velocity.x;
+                        computeAlignmentVector += actor.o_Velocity;
                         neighbourCount++;
                     }
                 }
@@ -63,18 +65,19 @@ namespace AISandbox
             }
             else
             {
-                computeAlignmentVector.x /= neighbourCount;
-                computeAlignmentVector.y /= neighbourCount;
+                computeAlignmentVector /= neighbourCount;
                 computeAlignmentVector.Normalize();
-                computeAlignmentVector.x *= maxSpeed;
-                computeAlignmentVector.y *= maxSpeed;
+                computeAlignmentVector *= maxSpeed;
                 computeAlignmentVector -= o_Velocity;
                 neighbourCount = 0;
                 alignmentVector = computeAlignmentVector;
             }
         }
 
-        public void computeCohesion()
+        /// <summary>
+        /// Calculate cohesion vector based on neighbor count
+        /// </summary>
+        public void ComputeCohesion()
         {
             computeCohesionVector = Vector2.zero;
 
@@ -82,10 +85,9 @@ namespace AISandbox
             {
                 if (actor != this)
                 {
-                    if (Vector2.Distance(actor.transform.position, transform.position) < flockingManager.neighbourDistance)
+                    if (Vector2.Distance(actor.transform.position, transform.position) < flockingManager.NeighbourDistance)
                     {
-                        computeCohesionVector.x += actor.transform.position.x;
-                        computeCohesionVector.y += actor.transform.position.y;
+                        computeCohesionVector += (Vector2) actor.transform.position;
                         neighbourCount++;
 
                     }
@@ -97,8 +99,7 @@ namespace AISandbox
             }
             else
             {
-                computeCohesionVector.x /= neighbourCount;
-                computeCohesionVector.y /= neighbourCount;
+                computeCohesionVector /= neighbourCount;
                 computeCohesionVector = new Vector2(computeCohesionVector.x - transform.position.x, computeCohesionVector.y - transform.position.y);
                 neighbourCount = 0;
                 cohesionVector = computeCohesionVector;
@@ -106,7 +107,11 @@ namespace AISandbox
 
         }
 
-        public void computeSeperation()
+        /// <summary>
+        /// Compute the seperation vector
+        /// </summary>
+
+        public void ComputeSeperation()
         {
             Vector2 steer = Vector2.zero;
             computeSeperationVector = Vector2.zero;
@@ -117,13 +122,11 @@ namespace AISandbox
                 {
                     float distance = Vector2.Distance(actor.transform.position, transform.position);
 
-                    if (distance < flockingManager.neighbourDistance)
+                    if (distance < flockingManager.NeighbourDistance)
                     {
-                        steer.x = transform.position.x - actor.transform.position.x;
-                        steer.y = transform.position.y - actor.transform.position.y;
-
+                        steer = transform.position - actor.transform.position;
                         steer.Normalize();
-                        steer *= 1.0f - (distance / flockingManager.neighbourDistance);
+                        steer *= 1.0f - (distance / flockingManager.NeighbourDistance);
                         computeSeperationVector += steer;
                         neighbourCount++;
                     }

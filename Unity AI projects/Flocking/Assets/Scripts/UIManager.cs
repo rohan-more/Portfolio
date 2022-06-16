@@ -16,10 +16,10 @@ namespace AISandbox
 
         void Start()
         {
-            _neighborDistanceSlider.value = flockingManager.neighbourDistance;
-            _separationSlider.value = flockingManager.seperationWeight;
-            _alignmentSlider.value = flockingManager.alignmentWeight;
-            _cohesionSlider.value = flockingManager.cohesionWeight;
+            _neighborDistanceSlider.value = flockingManager.NeighbourDistance;
+            _separationSlider.value = flockingManager.SeperationWeight;
+            _alignmentSlider.value = flockingManager.AlignmentWeight;
+            _cohesionSlider.value = flockingManager.CohesionWeight;
 
             _neighborDistanceSlider.onValueChanged.AddListener(OnNeighborDistanceSliderValueChanged);
             _separationSlider.onValueChanged.AddListener(OnSeparationSliderValueChanged);
@@ -30,22 +30,22 @@ namespace AISandbox
 
         private void OnNeighborDistanceSliderValueChanged(float _neighborDistance)
         {
-            flockingManager.neighbourDistance = _neighborDistance;
+            flockingManager.NeighbourDistance = _neighborDistance;
         }
 
         private void OnSeparationSliderValueChanged(float _separationWeight)
         {
-            flockingManager.seperationWeight = _separationWeight;
+            flockingManager.SeperationWeight = _separationWeight;
         }
 
         private void OnAlignmentSliderValueChanged(float _alignmentWeight)
         {
-            flockingManager.alignmentWeight = _alignmentWeight;
+            flockingManager.AlignmentWeight = _alignmentWeight;
         }
 
         private void OnCohesionSliderValueChanged(float _cohesionWeight)
         {
-            flockingManager.cohesionWeight = _cohesionWeight;
+            flockingManager.CohesionWeight = _cohesionWeight;
         }
         private void OnToggleValueChanged(bool toggle)
         {
